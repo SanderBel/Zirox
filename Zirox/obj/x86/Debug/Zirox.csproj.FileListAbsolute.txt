@@ -1,0 +1,136 @@
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\1.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\10.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\11.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\12.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\13.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\14.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\15.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\16.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\17.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\18.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\2.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\3.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\4.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\5.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\6.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\7.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\8.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Tiles\9.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead1.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead10.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead2.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead3.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead4.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead5.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead6.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead7.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead8.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Dead9.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (10).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Idle (9).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (10).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Jump (9).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpMelee (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpShoot (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpShoot (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpShoot (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpShoot (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\JumpShoot (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Melee (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Run (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\RunShoot (9).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Shoot (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Shoot (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Shoot (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Shoot (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (1).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (10).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (2).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (3).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (4).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (5).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (6).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (7).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (8).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Charpng\Slide (9).xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Crate.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Crystal.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\IceBox.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Igloo.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Sign_1.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Sign_2.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\SnowMan.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Stone.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Tree_1.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\Object\Tree_2.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\BGpng\BG\BG.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Zirox.exe
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Zirox.pdb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\MonoGame.Framework.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.XInput.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\MonoGame.Framework.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.XInput.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.csprojAssemblyReference.cache
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.csproj.CoreCompileInputs.cache
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.csproj.CopyComplete
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.exe
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.pdb
