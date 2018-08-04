@@ -15,11 +15,11 @@ namespace Zirox
         private Texture2D Texture { get; set; }
         private Rectangle _ShowRect;
         public Rectangle CollisionRectangle;
-        public Rectangle ResizeRect;
 
 
         // private Animation _animation;
         public Vector2 VelocityX = new Vector2(2, 0);
+        public Vector2 VelocityY = new Vector2(0, 2);
         public Beweging _beweging { get; set; }
 
 
@@ -28,9 +28,8 @@ namespace Zirox
         {
             Texture = _texture;
             Positie = _positie;//new Vector2(200, 200);
-            _ShowRect = new Rectangle(0, 0, 75, 150);
-            ResizeRect = new Rectangle(0, 0, 75, 150);
-            CollisionRectangle = new Rectangle((int)Positie.X, (int)Positie.Y, 75, 150);
+            _ShowRect = new Rectangle(0, 0, 60, 100);
+            CollisionRectangle = new Rectangle((int)Positie.X, (int)Positie.Y, 60, 100);
 
 
             /*  _animation = new Animation();
@@ -46,35 +45,23 @@ namespace Zirox
         {
             _beweging.Update();
 
-
-            if (_beweging.left || _beweging.right)
-            // _animation.Update(gameTime);
-            {
-                _ShowRectangle.X += 75;
-                if (_ShowRectangle.X > 150)
-                    _ShowRectangle.X = 0;
-            }
-            if (_beweging.up || _beweging.down)
-            // _animation.Update(gameTime);
-            {
-                _ShowRectangle.Y += 75;
-                if (_ShowRectangle.Y > 150)
-                    _ShowRectangle.Y = 0;
-            }
-
             if (_beweging.left)
                 Positie -= VelocityX;
             if (_beweging.right)
                 Positie += VelocityX;
+            if (_beweging.up)
+                Positie -= VelocityY;
+            if (_beweging.down)
+                Positie += VelocityY;
 
             CollisionRectangle.X = (int)Positie.X;
             CollisionRectangle.Y = (int)Positie.Y;
 
 
         }
-        Rectangle _ShowRectangle = new Rectangle(0, 0, 75, 150);
+        Rectangle _ShowRectangle = new Rectangle(0, 0, 55, 94);
 
-        public void Draw(SpriteBatch spritebatch, Rectangle rectangle)
+        public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.Draw(Texture, Positie, _ShowRectangle/*_animation.CurrentFrame.SourceRectangle*/, Color.AliceBlue);
         }
@@ -83,11 +70,5 @@ namespace Zirox
         {
             return CollisionRectangle;
         }
-
-        public Rectangle GetResizeRect()
-        {
-            return ResizeRect;
-        }
-
     }
 }

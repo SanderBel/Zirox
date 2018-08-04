@@ -115,12 +115,11 @@ namespace Zirox
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            Rectangle ResizeRect = Zirox.GetResizeRect();
 
             // TODO: Add your drawing code here.
             spriteBatch.Begin();
             spriteBatch.Draw(Backg, Vector2.Zero, Color.White);
-            Zirox.Draw(spriteBatch, ResizeRect);
+            Zirox.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
