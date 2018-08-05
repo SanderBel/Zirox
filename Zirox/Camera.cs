@@ -11,13 +11,17 @@ namespace Zirox
     public class Camera
     {
         private readonly Viewport _viewport;
+        public Vector2 Position { get; set; }
+        public Vector2 Origin { get; set; }
+        public float Rotation { get; set; }
+        public float Zoom { get; set; }
 
         public Camera(Viewport viewport)
         {
             _viewport = viewport;
-
             Rotation = 0;
             Zoom = 1;
+
             Origin = new Vector2(viewport.Width / 2f, viewport.Height / 2f);
             Position = Vector2.Zero;
         }
@@ -28,14 +32,7 @@ namespace Zirox
             {
                 return new Vector2(_viewport.Width * 0.5f, _viewport.Height * 0.5f);
             }
-        }
-
-
-
-        public Vector2 Position { get; set; }
-        public float Rotation { get; set; }
-        public float Zoom { get; set; }
-        public Vector2 Origin { get; set; }
+        }        
 
         public Matrix GetViewMatrix()
         {
