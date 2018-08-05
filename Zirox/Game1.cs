@@ -26,12 +26,15 @@ namespace Zirox
         Object sea;
         Level level;
 
+        Camera camera;
+        Vector2 camPos = new Vector2();
+
         List<ICollide> collideObjecten;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1800;
+            graphics.PreferredBackBufferWidth = 1780;
             graphics.PreferredBackBufferHeight = 893;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
@@ -46,7 +49,7 @@ namespace Zirox
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            camera = new Camera(GraphicsDevice.Viewport);
             base.Initialize();
         }
 
@@ -79,7 +82,7 @@ namespace Zirox
 
 
             _CharTexture = Content.Load<Texture2D>("Charpng/Idle (1)");
-            Zirox = new Character(_CharTexture, new Vector2(0, GraphicsDevice.Viewport.Height - _CharTexture.Height - objectTextureLeft.Height));
+            Zirox = new Character(_CharTexture, new Vector2(150, GraphicsDevice.Viewport.Height - _CharTexture.Height - objectTextureLeft.Height));
             Zirox._beweging = new BewegingKeys();
 
 
@@ -139,7 +142,8 @@ namespace Zirox
                 System.Console.WriteLine("AAAAA");
             }
 
-            
+            if (Zirox.IsMoving)
+                camPos += Zirox.VelocityX;
 
             base.Update(gameTime);
         }
@@ -152,10 +156,12 @@ namespace Zirox
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            var viewMatrix = camera.GetViewMatrix();
+            camera.Position = camPos+new Vector2(10,0);
             // TODO: Add your drawing code here.
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix: viewMatrix);
 
-            spriteBatch.Draw(Backg, Vector2.Zero, Color.White);
+            spriteBatch.Draw(Backg, camPos, Color.White);
 
             Zirox.Draw(spriteBatch);
 

@@ -11,6 +11,7 @@ namespace Zirox
 {
     public class Character : ICollide
     {
+        Matrix m;
         public Vector2 Positie { get; set; }
         private Texture2D Texture { get; set; }
         private Rectangle _ShowRect;
@@ -23,9 +24,13 @@ namespace Zirox
         public Beweging _beweging { get; set; }
 
 
+        Matrix rotationYMatrix;
+        public bool IsMoving = false;
 
         public Character(Texture2D _texture, Vector2 _positie)
         {
+            m = new Matrix();
+            rotationYMatrix = Matrix.CreateRotationY((float)Math.PI / 2);
             Texture = _texture;
             Positie = _positie;//new Vector2(200, 200);
             _ShowRect = new Rectangle(0, 0, 60, 100);
@@ -45,21 +50,33 @@ namespace Zirox
         {
             _beweging.Update();
 
-            if (_beweging.left)
-                Positie -= VelocityX;
-            if (_beweging.right)
-                Positie += VelocityX;
-            if (_beweging.up)
-                Positie -= VelocityY;
-            if (_beweging.down)
-                Positie += VelocityY;
+            if (_beweging.left || _beweging.right || _beweging.up || _beweging.down)
+                IsMoving = true;
+            else
+                IsMoving = false;
 
+            if (_beweging.left)
+                VelocityX.X = -2;
+            else if (_beweging.right)
+                VelocityX.X = 5;
+            else if (_beweging.up)
+                VelocityY.Y = -2;
+            else if (_beweging.down)
+                VelocityY.Y = 2;
+            else
+            {
+                VelocityX.X = 0;
+                VelocityY.Y = 0;
+            }
+
+            Positie += VelocityX;
+            Positie += VelocityY;
             CollisionRectangle.X = (int)Positie.X;
             CollisionRectangle.Y = (int)Positie.Y;
 
 
         }
-        Rectangle _ShowRectangle = new Rectangle(0, 0, 60, 100);
+        Rectangle _ShowRectangle = new Rectangle(0, 0, 55, 94);
 
         public void Draw(SpriteBatch spritebatch)
         {
