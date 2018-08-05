@@ -59,7 +59,7 @@ namespace Zirox
 
 
         }
-        Rectangle _ShowRectangle = new Rectangle(0, 0, 55, 94);
+        Rectangle _ShowRectangle = new Rectangle(0, 0, 60, 100);
 
         public void Draw(SpriteBatch spritebatch)
         {

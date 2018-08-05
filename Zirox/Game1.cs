@@ -16,6 +16,15 @@ namespace Zirox
         Texture2D Backg;
         Texture2D _CharTexture;
         Character Zirox;
+        
+        Object tegelLeft;
+        Object tegelMid;
+        Object tegelRight;
+        Object platformLeft;
+        Object platformMid;
+        Object platformRight;
+        Object sea;
+        Level level;
 
         List<ICollide> collideObjecten;
 
@@ -52,13 +61,40 @@ namespace Zirox
 
             // TODO: use this.Content to load your game content here 
             Backg = Content.Load<Texture2D>("BGpng/BG/BG");
-            
+
+            Texture2D objectTextureLeft = Content.Load<Texture2D>("BGpng/Tiles/1");
+            tegelLeft = new Object(objectTextureLeft, new Vector2(0, 0));
+            Texture2D objectTextureMid = Content.Load<Texture2D>("BGpng/Tiles/2");
+            tegelMid = new Object(objectTextureMid, new Vector2(0, 0));
+            Texture2D objectTextureRight = Content.Load<Texture2D>("BGpng/Tiles/3");
+            tegelRight = new Object(objectTextureRight, new Vector2(0, 0));
+            Texture2D platformTextLeft = Content.Load<Texture2D>("BGpng/Tiles/14");
+            platformLeft = new Object(platformTextLeft, new Vector2(0, 0));
+            Texture2D platformTextMid = Content.Load<Texture2D>("BGpng/Tiles/15");
+            platformMid = new Object(platformTextMid, new Vector2(0, 0));
+            Texture2D platformTextRight = Content.Load<Texture2D>("BGpng/Tiles/16");
+            platformRight = new Object(platformTextRight, new Vector2(0, 0));
+            Texture2D seaTexture = Content.Load<Texture2D>("BGpng/Tiles/17");
+            sea = new Object(seaTexture, new Vector2(0, 0));
+
+
             _CharTexture = Content.Load<Texture2D>("Charpng/Idle (1)");
-            Zirox = new Character(_CharTexture, new Vector2(200, 200));
+            Zirox = new Character(_CharTexture, new Vector2(0, GraphicsDevice.Viewport.Height - _CharTexture.Height - objectTextureLeft.Height));
             Zirox._beweging = new BewegingKeys();
+
 
             collideObjecten = new List<ICollide>();
             collideObjecten.Add(Zirox);
+
+            level = new Level();
+            level.textureLeft = objectTextureLeft;
+            level.textureMid = objectTextureMid;
+            level.textureRight = objectTextureRight;
+            level.texturePlatLeft = platformTextLeft;
+            level.texturePlatMid = platformTextMid;
+            level.texturePlatRight = platformTextRight;
+            level.textureSea = seaTexture;
+            level.CreateWorld();
         }
 
         /// <summary>
@@ -118,8 +154,13 @@ namespace Zirox
 
             // TODO: Add your drawing code here.
             spriteBatch.Begin();
+
             spriteBatch.Draw(Backg, Vector2.Zero, Color.White);
+
             Zirox.Draw(spriteBatch);
+
+            level.DrawLevel(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

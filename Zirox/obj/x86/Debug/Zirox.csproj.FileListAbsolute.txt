@@ -134,3 +134,9 @@ E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.csproj.Cor
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.csproj.CopyComplete
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.exe
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\obj\x86\Debug\Zirox.pdb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Enemie\KnightEnemie.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Enemie\KnightEnemieAttack.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Enemie\KnightEnemieDead.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Enemie\KnightEnemieIdle.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Enemie\KnightEnemieRun.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Enemie\KnightEnemieWalk.xnb
