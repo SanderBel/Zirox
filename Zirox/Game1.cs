@@ -14,7 +14,14 @@ namespace Zirox
         SpriteBatch spriteBatch;
 
         Texture2D Backg;
-        Texture2D _CharTexture;
+        Texture2D _CharTexture1;
+        Texture2D _CharTexture2;
+        Texture2D _CharTexture3;
+        Texture2D _CharTexture4;
+        Texture2D _CharTexture5;
+        Texture2D _CharTexture6;
+        Texture2D _CharTexture7;
+        Texture2D _CharTexture8;
         Character Zirox;
         
         Object tegelLeft;
@@ -81,8 +88,16 @@ namespace Zirox
             sea = new Object(seaTexture, new Vector2(0, 0));
 
 
-            _CharTexture = Content.Load<Texture2D>("Charpng/Idle (1)");
-            Zirox = new Character(_CharTexture, new Vector2(150, GraphicsDevice.Viewport.Height - _CharTexture.Height - objectTextureLeft.Height));
+            _CharTexture1 = Content.Load<Texture2D>("Charpng/Run (1)");
+            _CharTexture2 = Content.Load<Texture2D>("Charpng/Run (2)");
+            _CharTexture3 = Content.Load<Texture2D>("Charpng/Run (3)");
+            _CharTexture4 = Content.Load<Texture2D>("Charpng/Run (4)");
+            _CharTexture5 = Content.Load<Texture2D>("Charpng/Run (5)");
+            _CharTexture6 = Content.Load<Texture2D>("Charpng/Run (6)");
+            _CharTexture7 = Content.Load<Texture2D>("Charpng/Run (7)");
+            _CharTexture8 = Content.Load<Texture2D>("Charpng/Run (8)");
+            Zirox = new Character(_CharTexture1, _CharTexture2, _CharTexture3, _CharTexture4, _CharTexture5, _CharTexture6, _CharTexture7, _CharTexture8,
+                                    new Vector2(150, GraphicsDevice.Viewport.Height - _CharTexture1.Height - objectTextureLeft.Height));
             Zirox._beweging = new BewegingKeys();
 
 
