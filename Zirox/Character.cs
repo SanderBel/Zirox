@@ -24,12 +24,10 @@ namespace Zirox
         private Rectangle _ShowRect;
         public Rectangle CollisionRectangle;
 
-
         private Animation _animation;
         public Vector2 VelocityX = new Vector2(2, 0);
         public Vector2 VelocityY = new Vector2(0, 2);
         public Beweging _beweging { get; set; }
-
 
         Matrix rotationYMatrix;
         public bool IsMoving = false;
@@ -47,10 +45,8 @@ namespace Zirox
             Texture6 = _texture6;
             Texture7 = _texture7;
             Texture8 = _texture8;
-            Positie = _positie;//new Vector2(200, 200);
-            _ShowRect = new Rectangle(0, 0, 60, 100);
+            Positie = _positie;
             CollisionRectangle = new Rectangle((int)Positie.X, (int)Positie.Y, 60, 100);
-
 
             _animation = new Animation();
             _animation.AddFrame(_texture1);
@@ -64,7 +60,6 @@ namespace Zirox
             _animation.AantalBewegingenPerSeconde = 8;
         }
 
-
         public void Update(GameTime gameTime)
         {
             _beweging.Update();
@@ -74,32 +69,40 @@ namespace Zirox
                 IsMoving = true;
                 _animation.Update(gameTime);
             }
-
             else
                 IsMoving = false;
 
-            if (_beweging.left)
-                VelocityX.X = -2;
-            else if (_beweging.right)
-                VelocityX.X = 5;
+            if(_beweging.left)
+            {
+                VelocityX.X = -5f;
+               // VelocityY.Y += 0.3f;
+            }
+            else if(_beweging.right)
+            {
+                VelocityX.X = 5f;
+               // VelocityY.Y += 0.3f;
+            }
             else if (_beweging.up)
-                VelocityY.Y = -2;
+            {
+                VelocityY.Y = -7f;
+                VelocityX.X = 0f;
+            }
             else if (_beweging.down)
-                VelocityY.Y = 2;
+            {
+                VelocityY.Y = 7f;
+                VelocityX.X = 0f;
+            }
             else
             {
                 VelocityX.X = 0;
-                VelocityY.Y = 0;
+                //VelocityY.Y += 0.3f;
             }
 
             Positie += VelocityX;
             Positie += VelocityY;
             CollisionRectangle.X = (int)Positie.X;
             CollisionRectangle.Y = (int)Positie.Y;
-
-
         }
-        Rectangle _ShowRectangle = new Rectangle(0, 0, 55, 94);
 
         public void Draw(SpriteBatch spritebatch)
         {

@@ -103,6 +103,13 @@ namespace Zirox
 
             collideObjecten = new List<ICollide>();
             collideObjecten.Add(Zirox);
+            collideObjecten.Add(tegelLeft);
+            collideObjecten.Add(tegelMid);
+            collideObjecten.Add(tegelRight);
+            collideObjecten.Add(platformLeft);
+            collideObjecten.Add(platformMid);
+            collideObjecten.Add(platformRight);
+            collideObjecten.Add(sea);
 
             level = new Level();
             level.textureLeft = objectTextureLeft;
@@ -149,16 +156,16 @@ namespace Zirox
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-            Zirox.Update(gameTime);
-
-            if (CheckCollision())
-            {
-                System.Console.WriteLine("AAAAA");
-            }
-
+            // TODO: Add your update logic here                       
             if (Zirox.IsMoving)
                 camPos += Zirox.VelocityX;
+
+            Zirox.Update(gameTime);
+
+            if (CheckCollision() && Zirox.VelocityY.Y<0)
+            {
+                //Exit();
+            }
 
             base.Update(gameTime);
         }
