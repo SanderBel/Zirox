@@ -19,7 +19,6 @@ namespace Zirox
         Level level;
 
         Camera camera;
-        Vector2 camPos = new Vector2();
         
 
         public Game1()
@@ -34,8 +33,7 @@ namespace Zirox
         
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            camera = new Camera(GraphicsDevice.Viewport);
+            
             level = new Level();
             Zirox = new Character();
             base.Initialize();
@@ -43,12 +41,15 @@ namespace Zirox
         
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);            
-            Backg = Content.Load<Texture2D>("finalDay");
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            camera = new Camera(GraphicsDevice.Viewport);
+            
             Zirox._beweging = new BewegingPijltjes();
+            
             Zirox.Load(Content);
 
             Tiles.Content = Content;
+            Backg = Content.Load<Texture2D>("finalDay");
             /*
              * 1 = Left Tile
              * 2 = Middle Tile
@@ -92,7 +93,10 @@ namespace Zirox
 
             Zirox.Update(gameTime);
             foreach (CollisionTiles tile in level.CollisionTiles)
+            {
                 Zirox.Collision(tile.Rectangle, level.Width, level.Height);
+                camera.Update(Zirox.Position, level.Width, level.Height);
+            }
 
             base.Update(gameTime);
         }
@@ -101,11 +105,11 @@ namespace Zirox
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            var viewMatrix = camera.GetViewMatrix();
-            camera.Position = camPos+new Vector2(10,0);
-
-            spriteBatch.Begin(transformMatrix: viewMatrix);
-            spriteBatch.Draw(Backg, camPos, Color.White);
+            spriteBatch.Begin(SpriteSortMode.Deferred,
+                              BlendState.AlphaBlend,
+                              null,null,null,null,
+                              camera.Transform);
+            spriteBatch.Draw(Backg,camera.BackPosition,Color.White);
             Zirox.Draw(spriteBatch);
             level.Draw(spriteBatch);
             spriteBatch.End();
