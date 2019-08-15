@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace Zirox
 {
     public class AnimationFrame
     {
-        public Texture2D SourceTexture { get; set; }
+        public Rectangle SourceRectangle { get; set; }
     }
 }

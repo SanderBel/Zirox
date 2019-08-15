@@ -14,35 +14,35 @@ namespace Zirox
         SpriteBatch spriteBatch;
 
         Texture2D Backg;
-        Texture2D _CharTexture1;
-        Texture2D _CharTexture2;
-        Texture2D _CharTexture3;
-        Texture2D _CharTexture4;
-        Texture2D _CharTexture5;
-        Texture2D _CharTexture6;
-        Texture2D _CharTexture7;
-        Texture2D _CharTexture8;
+        Texture2D ZiroxTexture;
+        Texture2D textureSlopeEndL;
+        Texture2D textureSlopeL;
+        Texture2D textureSlopeEndR;
+        Texture2D textureSlopeR;
+        Texture2D textureLeft;
+        Texture2D textureMid;
+        Texture2D textureRight;
+        Texture2D textureWater;
+        Texture2D textureBush;
+        Texture2D textureDirt;
         Character Zirox;
-        
-        Object tegelLeft;
-        Object tegelMid;
-        Object tegelRight;
-        Object platformLeft;
-        Object platformMid;
-        Object platformRight;
-        Object sea;
+
+        Vector2 screen = new Vector2(1014, 768);
+
+        List<Tiles> TilesList = new List<Tiles>();
+        List<ICollide> collideObjecten = new List<ICollide>();
         Level level;
 
         Camera camera;
         Vector2 camPos = new Vector2();
-
-        List<ICollide> collideObjecten;
+        
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1780;
-            graphics.PreferredBackBufferHeight = 893;
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = (int)screen.X;
+            graphics.PreferredBackBufferHeight = (int)screen.Y;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
@@ -57,6 +57,7 @@ namespace Zirox
         {
             // TODO: Add your initialization logic here
             camera = new Camera(GraphicsDevice.Viewport);
+            level = new Level();
             base.Initialize();
         }
 
@@ -70,56 +71,72 @@ namespace Zirox
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here 
-            Backg = Content.Load<Texture2D>("BGpng/BG/BG");
+            Backg = Content.Load<Texture2D>("finalDay");
+            //textureDirt = Content.Load<Texture2D>("Dirt");
+            //textureSlopeEndL = Content.Load<Texture2D>("SlopeEndL");
+            //textureSlopeL = Content.Load<Texture2D>("SlopeL");
+            //textureSlopeEndR = Content.Load<Texture2D>("SlopeEndR");
+            //textureSlopeR = Content.Load<Texture2D>("SlopeR");
+            //textureLeft = Content.Load<Texture2D>("Left");
+            //textureMid = Content.Load<Texture2D>("Mid");
+            //textureRight = Content.Load<Texture2D>("Right");
+            //textureWater = Content.Load<Texture2D>("Water");
+            //textureBush = Content.Load<Texture2D>("AtmnBush");
 
-            Texture2D objectTextureLeft = Content.Load<Texture2D>("BGpng/Tiles/1");
-            tegelLeft = new Object(objectTextureLeft, new Vector2(0, 0));
-            Texture2D objectTextureMid = Content.Load<Texture2D>("BGpng/Tiles/2");
-            tegelMid = new Object(objectTextureMid, new Vector2(0, 0));
-            Texture2D objectTextureRight = Content.Load<Texture2D>("BGpng/Tiles/3");
-            tegelRight = new Object(objectTextureRight, new Vector2(0, 0));
-            Texture2D platformTextLeft = Content.Load<Texture2D>("BGpng/Tiles/14");
-            platformLeft = new Object(platformTextLeft, new Vector2(0, 0));
-            Texture2D platformTextMid = Content.Load<Texture2D>("BGpng/Tiles/15");
-            platformMid = new Object(platformTextMid, new Vector2(0, 0));
-            Texture2D platformTextRight = Content.Load<Texture2D>("BGpng/Tiles/16");
-            platformRight = new Object(platformTextRight, new Vector2(0, 0));
-            Texture2D seaTexture = Content.Load<Texture2D>("BGpng/Tiles/17");
-            sea = new Object(seaTexture, new Vector2(0, 0));
-
-
-            _CharTexture1 = Content.Load<Texture2D>("Charpng/Run (1)");
-            _CharTexture2 = Content.Load<Texture2D>("Charpng/Run (2)");
-            _CharTexture3 = Content.Load<Texture2D>("Charpng/Run (3)");
-            _CharTexture4 = Content.Load<Texture2D>("Charpng/Run (4)");
-            _CharTexture5 = Content.Load<Texture2D>("Charpng/Run (5)");
-            _CharTexture6 = Content.Load<Texture2D>("Charpng/Run (6)");
-            _CharTexture7 = Content.Load<Texture2D>("Charpng/Run (7)");
-            _CharTexture8 = Content.Load<Texture2D>("Charpng/Run (8)");
-            Zirox = new Character(_CharTexture1, _CharTexture2, _CharTexture3, _CharTexture4, _CharTexture5, _CharTexture6, _CharTexture7, _CharTexture8,
-                                    new Vector2(150, GraphicsDevice.Viewport.Height - _CharTexture1.Height - objectTextureLeft.Height));
-            Zirox._beweging = new BewegingKeys();
+            ZiroxTexture = Content.Load<Texture2D>("CharSheet");
+            Zirox = new Character(ZiroxTexture, new Vector2(64, 64));
+            Zirox._beweging = new BewegingPijltjes();
 
 
-            collideObjecten = new List<ICollide>();
+            //collideObjecten = new List<ICollide>();
             collideObjecten.Add(Zirox);
-            collideObjecten.Add(tegelLeft);
-            collideObjecten.Add(tegelMid);
-            collideObjecten.Add(tegelRight);
-            collideObjecten.Add(platformLeft);
-            collideObjecten.Add(platformMid);
-            collideObjecten.Add(platformRight);
-            collideObjecten.Add(sea);
 
-            level = new Level();
-            level.textureLeft = objectTextureLeft;
-            level.textureMid = objectTextureMid;
-            level.textureRight = objectTextureRight;
-            level.texturePlatLeft = platformTextLeft;
-            level.texturePlatMid = platformTextMid;
-            level.texturePlatRight = platformTextRight;
-            level.textureSea = seaTexture;
-            level.CreateWorld();
+            Tiles.Content = Content;
+            /*
+             * 1 = Left Tile
+             * 2 = Middle Tile
+             * 3 = Right Tile
+             * 4 = Slope End Left
+             * 5 = Slope Left
+             * 6 = Slope End Right
+             * 7 = Slope Right
+             * 8 = Dirt
+             * 9 = Water
+             * 10 = Water Filler
+             * 11 = Next Level Sign
+             * 12 = End Sign
+             */
+            level.Generate(new int[,]
+            {
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,2,2,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,4,8,8,8,8,7,0,0,0,0,0,0,0,0,5,2,7,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,3,0,0,0,5,2,2,2,2,4,4,8,8,8,8,8,8,7,0,0,0,0,0,0,1,4,8,8,6,3,0,0,1,2,3,0 },
+                { 0,0,0,1,3,0,0,1,2,3,0,0,0,0,0,0,0,0,5,4,8,8,8,8,8,8,8,8,8,8,8,8,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,4,8,8,8,8,8,8,8,8,8,8,8,8,8,8,6,1,2,2,2,3,9,9,9,9,9,9,9,1,2,2,1,3 },
+                { 1,2,2,2,2,3,9,9,1,3,9,1,3,9,9,9,1,4,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10,10,10,10,10,10,10,8,8,8,8,8 },
+            }, 64);
+        
+
+            //level = new Level(TilesList);
+            //level.textureBush = textureBush;
+            //level.textureLeft = textureLeft;
+            //level.textureMid = textureMid;
+            //level.textureRight = textureRight;
+            //level.textureSlopeEndL = textureSlopeEndL;
+            //level.textureSlopeEndR = textureSlopeEndR;
+            //level.textureSlopeL = textureSlopeL;
+            //level.textureSlopeR = textureSlopeR;
+            //level.textureWater = textureWater;
+            //level.CreateWorld();
+
+            //foreach (Tiles tiles in TilesList)
+            //    collideObjecten.Add(tiles);
         }
 
         /// <summary>
@@ -142,7 +159,8 @@ namespace Zirox
                          return true;
                      }
                  }
-             }
+                return false;
+            }
             return false;
         }
 
@@ -164,7 +182,8 @@ namespace Zirox
 
             if (CheckCollision() && Zirox.VelocityY.Y<0)
             {
-                //Exit();
+                System.Console.WriteLine("AAAAA");
+                Zirox.VelocityY.Y = 0f;
             }
 
             base.Update(gameTime);
@@ -187,7 +206,7 @@ namespace Zirox
 
             Zirox.Draw(spriteBatch);
 
-            level.DrawLevel(spriteBatch);
+            level.Draw(spriteBatch);
 
             spriteBatch.End();
 

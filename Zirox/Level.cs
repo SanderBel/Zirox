@@ -9,70 +9,138 @@ using System.Threading.Tasks;
 
 namespace Zirox
 {
-    public class Level
+    class Level
     {
-        public Texture2D textureLeft;
-        public Texture2D textureMid;
-        public Texture2D textureRight;
-        public Texture2D texturePlatLeft;
-        public Texture2D texturePlatMid;
-        public Texture2D texturePlatRight;
-        public Texture2D textureSea;
-        public Level()
-        {
+        private List<CollisionTiles> collisionTiles = new List<CollisionTiles>();
 
+        public List<CollisionTiles> CollisionTiles
+        {
+            get { return collisionTiles; }
         }
-        //blok is 128x128
-        public byte[,] tileArray = new byte[,]
-        {
-            { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-            { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-            { 4,5,6,0,0,0,0,0,4,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-            { 0,0,0,0,4,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-            { 4,5,5,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-            { 0,0,0,0,4,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-            { 1,2,2,2,2,3,7,7,1,3,7,1,3,7,7,7,1,2,2,3,7,1,2,2,2,2,2,2,3,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1,2,2,2,2,3 },
-        };
 
-        public Object[,] objectArray = new Object[7, 50];
-
-        public void CreateWorld()
+        private int width, height;
+        public int Width
         {
-            for (int x = 0; x < 7; x++)
-            {
-                for (int y = 0; y < 50; y++)
+            get { return width; }
+        }
+        
+        public int Height
+        {
+            get { return height; }
+        }
+
+        public Level() { }
+
+        public void Generate(int[,] level, int size)
+        {
+            for(int x=0; x < level.GetLength(1); x++)
+                for(int y=0; y < level.GetLength(0); y++)
                 {
-                    if (tileArray[x, y] == 1)
-                        objectArray[x, y] = new Object(textureLeft, new Vector2(y * 128, x * 128));
-                    else if (tileArray[x, y] == 2)
-                        objectArray[x, y] = new Object(textureMid, new Vector2(y * 128, x * 128));
-                    else if (tileArray[x, y] == 3)
-                        objectArray[x, y] = new Object(textureRight, new Vector2(y * 128, x * 128));
-                    else if (tileArray[x, y] == 4)
-                        objectArray[x, y] = new Object(texturePlatLeft, new Vector2(y * 128, x * 128));
-                    else if (tileArray[x, y] == 5)
-                        objectArray[x, y] = new Object(texturePlatMid, new Vector2(y * 128, x * 128));
-                    else if (tileArray[x, y] == 6)
-                        objectArray[x, y] = new Object(texturePlatRight, new Vector2(y * 128, x * 128));
-                    else if (tileArray[x, y] == 7)
-                        objectArray[x, y] = new Object(textureSea, new Vector2(y * 128, x * 128));
+                    int number = level[y, x];
+
+                    if (number > 0)
+                        collisionTiles.Add(new CollisionTiles(number, new Rectangle(x * size, y * size, size, size)));
+
+                    width = (x + 1) * size;
+                    height = (y + 1) * size;
                 }
-            }
         }
 
-        public void DrawLevel(SpriteBatch spritebatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            for (int x = 0; x < 7; x++)
-            {
-                for (int y = 0; y < 50; y++)
-                {
-                    if (objectArray[x, y] != null)
-                    {
-                        objectArray[x, y].Draw(spritebatch);
-                    }
-
-                }
-            }
+            foreach (CollisionTiles tile in collisionTiles)
+                tile.Draw(spriteBatch);
         }
+
     }
+
+    //public class Level
+    //{
+    //    public Texture2D textureSlopeEndL;
+    //    public Texture2D textureSlopeL;
+    //    public Texture2D textureSlopeEndR;
+    //    public Texture2D textureSlopeR;
+    //    public Texture2D textureLeft;
+    //    public Texture2D textureMid;
+    //    public Texture2D textureRight;
+    //    public Texture2D textureWater;
+    //    public Texture2D textureBush;
+
+    //    private Tiles TileSlopeEndL;
+    //    private Tiles TileSlopeL;
+    //    private Tiles TileSlopeEndR;
+    //    private Tiles TileSlopeR;
+    //    private Tiles TileLeft;
+    //    private Tiles TileMid;
+    //    private Tiles TileRight;
+    //    private Tiles TileWater;
+    //    private Tiles TileBush;
+    //    List<Tiles> TilesList = new List<Tiles>();
+
+    //    public Level(List<Tiles> TilesList)
+    //    {
+    //        this.TilesList = TilesList;
+    //    }
+    //    //blok is 128x128
+    //    public byte[,] tileArray = new byte[,]
+    //    {
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+    //        { 1,1,1,1,1,3,9,9,1,3,9,1,3,9,9,9,1,2,2,2,3,1,2,2,2,2,2,2,3,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1,2,2,2,2,3 },
+    //    };
+
+    //    public Tiles[,] objectArray = new Tiles[12, 50];
+
+    //    public void CreateWorld()
+    //    {
+    //        for (int x = 0; x < 12; x++)
+    //        {
+    //            for (int y = 0; y < 50; y++)
+    //            {
+    //                if (tileArray[x, y] == 1)
+    //                    objectArray[x, y] = new Tiles(textureLeft, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 2)
+    //                    objectArray[x, y] = new Tiles(textureMid, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 3)
+    //                    objectArray[x, y] = new Tiles(textureRight, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 4)
+    //                    objectArray[x, y] = new Tiles(textureSlopeEndL, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 5)
+    //                    objectArray[x, y] = new Tiles(textureSlopeL, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 6)
+    //                    objectArray[x, y] = new Tiles(textureSlopeEndR, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 7)
+    //                    objectArray[x, y] = new Tiles(textureSlopeR, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 8)
+    //                    objectArray[x, y] = new Tiles(textureBush, new Vector2(y * 64, x * 64));
+    //                else if (tileArray[x, y] == 9)
+    //                    objectArray[x, y] = new Tiles(textureWater, new Vector2(y * 64, x * 64));
+    //            }
+    //        }
+    //    }
+
+    //    public void DrawLevel(SpriteBatch spritebatch)
+    //    {
+    //        for (int x = 0; x < 12; x++)
+    //        {
+    //            for (int y = 0; y < 50; y++)
+    //            {
+    //                if (objectArray[x, y] != null)
+    //                {
+    //                    objectArray[x, y].Draw(spritebatch);
+    //                }
+
+    //            }
+    //        }
+    //    }
+    //}
 }

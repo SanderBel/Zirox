@@ -25,27 +25,29 @@ namespace Zirox
             frames = new List<AnimationFrame>();
             AantalBewegingenPerSeconde = 1;
         }
-        public void AddFrame(Texture2D texture)
+
+        //Nieuwe Frame aanmaken
+        public void AddFrame(Rectangle rectangle)
         {
             AnimationFrame newFrame = new AnimationFrame()
             {
-                SourceTexture = texture,
+                SourceRectangle = rectangle,
                 //Duration = duration
             };
 
             frames.Add(newFrame);
             CurrentFrame = frames[0];
-            offset = CurrentFrame.SourceTexture.Width;
+            offset = CurrentFrame.SourceRectangle.Width;
             foreach (AnimationFrame f in frames)
-                _totalWidth += f.SourceTexture.Width;
+                _totalWidth += f.SourceRectangle.Width;
         }
       
         public void Update(GameTime gameTime)
         {
-            double temp = CurrentFrame.SourceTexture.Width * ((double)gameTime.ElapsedGameTime.Milliseconds / 1000);
+            double temp = CurrentFrame.SourceRectangle.Width * ((double)gameTime.ElapsedGameTime.Milliseconds / 1000);
 
             x += temp;
-            if (x >= CurrentFrame.SourceTexture.Width / AantalBewegingenPerSeconde)
+            if (x >= CurrentFrame.SourceRectangle.Width / AantalBewegingenPerSeconde)
             {
                 Console.WriteLine(x);
                 x = 0;
@@ -53,7 +55,7 @@ namespace Zirox
                 if (counter >= frames.Count)
                     counter = 0;
                 CurrentFrame = frames[counter];
-                offset += CurrentFrame.SourceTexture.Width;
+                offset += CurrentFrame.SourceRectangle.Width;
             }
             if (offset >= _totalWidth)
                 offset = 0;            

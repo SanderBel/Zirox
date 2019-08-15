@@ -4,112 +4,25 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (9).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Idle (10).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (9).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Jump (10).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpMelee (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpShoot (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpShoot (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpShoot (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpShoot (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/JumpShoot (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Melee (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Run (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/RunShoot (9).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Shoot (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Shoot (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Shoot (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Shoot (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (1).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (2).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (3).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (4).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (5).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (6).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (7).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (8).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (9).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Slide (10).png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead1.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead2.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead3.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead4.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead5.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead6.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead7.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead8.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead9.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Charpng/Dead10.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/BG/BG.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Crate.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Crystal.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/IceBox.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Igloo.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Sign_1.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Sign_2.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/SnowMan.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Stone.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Tree_1.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Object/Tree_2.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/1.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/14.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/15.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/16.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/17.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/2.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/3.png</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Enemie/KnightEnemie.jpg</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Enemie/KnightEnemieAttack.jpg</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Enemie/KnightEnemieDead.jpg</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Enemie/KnightEnemieIdle.jpg</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Enemie/KnightEnemieRun.jpg</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Enemie/KnightEnemieWalk.jpg</File>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/BGpng/Tiles/18.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/CharSheet.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/AtmnBush.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/AtmnTree.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Bush.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tree.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Winter Tree.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/finalDay.PNG</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/finalNight.PNG</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile1.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile2.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile3.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile4.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile5.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile6.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile7.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile8.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile9.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile11.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile12.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile10.png</File>
   </SourceFiles>
 </SourceFileCollection>
