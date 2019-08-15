@@ -14,23 +14,12 @@ namespace Zirox
         SpriteBatch spriteBatch;
 
         Texture2D Backg;
-        Texture2D ZiroxTexture;
-        Texture2D textureSlopeEndL;
-        Texture2D textureSlopeL;
-        Texture2D textureSlopeEndR;
-        Texture2D textureSlopeR;
-        Texture2D textureLeft;
-        Texture2D textureMid;
-        Texture2D textureRight;
-        Texture2D textureWater;
-        Texture2D textureBush;
-        Texture2D textureDirt;
         Character Zirox;
 
         Vector2 screen = new Vector2(1014, 768);
 
-        List<Tiles> TilesList = new List<Tiles>();
-        List<ICollide> collideObjecten = new List<ICollide>();
+        //List<Tiles> TilesList = new List<Tiles>();
+        //List<ICollide> collideObjecten = new List<ICollide>();
         Level level;
 
         Camera camera;
@@ -58,6 +47,7 @@ namespace Zirox
             // TODO: Add your initialization logic here
             camera = new Camera(GraphicsDevice.Viewport);
             level = new Level();
+            Zirox = new Character();
             base.Initialize();
         }
 
@@ -67,29 +57,10 @@ namespace Zirox
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here 
+            spriteBatch = new SpriteBatch(GraphicsDevice);            
             Backg = Content.Load<Texture2D>("finalDay");
-            //textureDirt = Content.Load<Texture2D>("Dirt");
-            //textureSlopeEndL = Content.Load<Texture2D>("SlopeEndL");
-            //textureSlopeL = Content.Load<Texture2D>("SlopeL");
-            //textureSlopeEndR = Content.Load<Texture2D>("SlopeEndR");
-            //textureSlopeR = Content.Load<Texture2D>("SlopeR");
-            //textureLeft = Content.Load<Texture2D>("Left");
-            //textureMid = Content.Load<Texture2D>("Mid");
-            //textureRight = Content.Load<Texture2D>("Right");
-            //textureWater = Content.Load<Texture2D>("Water");
-            //textureBush = Content.Load<Texture2D>("AtmnBush");
-
-            ZiroxTexture = Content.Load<Texture2D>("CharSheet");
-            Zirox = new Character(ZiroxTexture, new Vector2(64, 64));
             Zirox._beweging = new BewegingPijltjes();
-
-
-            //collideObjecten = new List<ICollide>();
-            collideObjecten.Add(Zirox);
+            Zirox.Load(Content);
 
             Tiles.Content = Content;
             /*
@@ -148,21 +119,21 @@ namespace Zirox
             // TODO: Unload any non ContentManager content here
         }
 
-        private bool CheckCollision()
-        {
-            for(int i = 0; i < collideObjecten.Count; i++)
-             {
-                 for(int j=i+1; j< collideObjecten.Count; j++)
-                 {
-                     if (collideObjecten[i].GetCollisionRectangle().Intersects(collideObjecten[j].GetCollisionRectangle()))
-                     {
-                         return true;
-                     }
-                 }
-                return false;
-            }
-            return false;
-        }
+        //private bool CheckCollision()
+        //{
+        //    for(int i = 0; i < collideObjecten.Count; i++)
+        //     {
+        //         for(int j=i+1; j< collideObjecten.Count; j++)
+        //         {
+        //             if (collideObjecten[i].GetCollisionRectangle().Intersects(collideObjecten[j].GetCollisionRectangle()))
+        //             {
+        //                 return true;
+        //             }
+        //         }
+        //        return false;
+        //    }
+        //    return false;
+        //}
 
         // <summary>
         // Allows the game to run logic such as updating the world,
@@ -174,17 +145,9 @@ namespace Zirox
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here                       
-            if (Zirox.IsMoving)
-                camPos += Zirox.VelocityX;
-
             Zirox.Update(gameTime);
-
-            if (CheckCollision() && Zirox.VelocityY.Y<0)
-            {
-                System.Console.WriteLine("AAAAA");
-                Zirox.VelocityY.Y = 0f;
-            }
+            foreach (CollisionTiles tile in level.CollisionTiles)
+                Zirox.Collision(tile.Rectangle, level.Width, level.Height);
 
             base.Update(gameTime);
         }

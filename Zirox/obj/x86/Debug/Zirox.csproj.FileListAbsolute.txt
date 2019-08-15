@@ -53,3 +53,4 @@ E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Tile10.xnb
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Tile11.xnb
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Tile12.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Zirox.xnb
