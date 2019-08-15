@@ -17,7 +17,7 @@ namespace Zirox
         private Vector2 velocity;
         private Rectangle rectangle;
         public Beweging _beweging { get; set; }
-        private Animation _animation;
+        // private Animation _animation;
         public bool IsMoving = false;
 
         private bool hasJumped = false;
@@ -39,18 +39,11 @@ namespace Zirox
             position += velocity;
             rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
 
+            //Gravity
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
 
             _beweging.Update();
-
-            if (_beweging.left || _beweging.right || _beweging.up || _beweging.down)
-            {
-                IsMoving = true;
-                //_animation.Update(gameTime);
-            }
-            else
-                IsMoving = false;
 
             if (_beweging.right)
                 velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
@@ -60,11 +53,10 @@ namespace Zirox
 
             if (_beweging.up && hasJumped == false)
             {
-                position.Y -= 3f;
+                position.Y -= 1f;
                 velocity.Y = -10f;
                 hasJumped = true;
             }
-
         }
 
         public void Collision(Rectangle newRectangle, int xOffset, int yOffset)

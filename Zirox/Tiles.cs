@@ -33,41 +33,4 @@ namespace Zirox
         }
 
     }
-
-    //class CollisionTiles : Tiles
-    //{
-    //    public CollisionTiles(int i, Rectangle newRectangle)
-    //    {
-    //        texture = Content.Load<Texture2D>("Tile" + i);
-    //        this.Rectangle = newRectangle;
-    //    }
-    //}
-
-
-
-    //public class Tiles : ICollide
-    //{
-    //    public Texture2D _texture { get; set; }
-    //    public Vector2 Position { get; set; }
-    //    private Rectangle CollisionRectangle;
-    //    private Rectangle _ShowRect;
-
-    //    public Tiles(Texture2D texture, Vector2 pos)
-    //    {
-    //        _texture = texture;
-    //        Position = pos;
-    //        _ShowRect = new Rectangle(0, 0, 128, 128);
-    //        CollisionRectangle = new Rectangle((int)pos.X,(int)pos.Y,texture.Width,texture.Height);
-    //    }
-
-    //    public void Draw(SpriteBatch spritebatch)
-    //    {
-    //        spritebatch.Draw(_texture, Position, Color.AliceBlue);
-    //    }
-
-    //    public Rectangle GetCollisionRectangle()
-    //    {
-    //        return CollisionRectangle;
-    //    }
-    //}
 }
