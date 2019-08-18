@@ -43,12 +43,12 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="AnimationFrame.cs" />
+    <Compile Include="BaseSprite.cs" />
     <Compile Include="Beweging.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="CollisionTiles.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="ICollide.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="RectangleHelper.cs" />
     <Compile Include="Tiles.cs" />

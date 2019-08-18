@@ -10,16 +10,26 @@ namespace Zirox
     /// </summary>
     public class Game1 : Game
     {
+        public enum GameState
+        {
+            MainMenu,
+            LevelSelect,
+            Level1,
+            Level2,
+            Died,
+            QuitGame
+        }
+        GameState CurrentState = GameState.MainMenu;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D Backg;
-        Character Zirox;
         Vector2 screen = new Vector2(1014, 768);
-        Level level;
-
+        Texture2D Backg;
         Camera camera;
-        
+
+        Character Zirox;
+        Level level;        
 
         public Game1()
         {

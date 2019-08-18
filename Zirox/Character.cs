@@ -15,10 +15,14 @@ namespace Zirox
         private Texture2D texture;
         private Vector2 position = new Vector2(64, 256);
         private Vector2 velocity;
+        private Rectangle _ShowRect;
         private Rectangle rectangle;
         public Beweging _beweging { get; set; }
-        // private Animation _animation;
-        public bool IsMoving = false;
+        private Animation _animationIdle;
+        //private Animation _animationJump;
+        private bool IsMoving = false;
+        private bool FaceRight = true;
+        SpriteEffects FlipVerticalEffect = SpriteEffects.FlipHorizontally;
 
         private bool hasJumped = false;
 
@@ -31,25 +35,65 @@ namespace Zirox
 
         public void Load(ContentManager Content)
         {
-            texture = Content.Load<Texture2D>("Zirox");
+            texture = Content.Load<Texture2D>("CharSheet");
+
+            _ShowRect = new Rectangle(0, 0, 54, 63);
+            _animationIdle = new Animation();
+            _animationIdle.AddFrame(new Rectangle(0, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(64, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(128, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(192, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(256, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(320, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(384, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(448, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(512, 0, 64, 74));
+            _animationIdle.AddFrame(new Rectangle(576, 0, 64, 74));
+            _animationIdle.AantalBewegingenPerSeconde = 8;
+
+        //    _animationJump = new Animation();
+        //    _animationJump.AddFrame(new Rectangle(0, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(64, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(128, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(192, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(256, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(320, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(384, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(448, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(512, 0, 64, 74));
+        //    _animationJump.AddFrame(new Rectangle(576, 0, 64, 74));
+        //    _animationJump.AantalBewegingenPerSeconde = 8;
         }
 
         public void Update(GameTime gameTime)
         {
             position += velocity;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, _ShowRect.Width, _ShowRect.Height);
 
             //Gravity
             if (velocity.Y < 10)
                 velocity.Y += 0.4f;
 
             _beweging.Update();
+            _animationIdle.Update(gameTime);
 
             if (_beweging.right)
+            {
+                FaceRight = true;
                 velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+                IsMoving = true;
+            }
             else if (_beweging.left)
+            {
+                FaceRight = false;
                 velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
-            else velocity.X = 0f;
+                IsMoving = true;
+            }
+            else
+            {
+                IsMoving = false;
+                velocity.X = 0f;
+            }
 
             if (_beweging.up && hasJumped == false)
             {
@@ -87,92 +131,10 @@ namespace Zirox
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rectangle, Color.White);
+            if(FaceRight == true && IsMoving == false)
+            spriteBatch.Draw(texture, rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White);
+            else if(FaceRight == false && IsMoving == false)
+                spriteBatch.Draw(texture,rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0,0), FlipVerticalEffect,0.0f);
         }
-
-
-        //Matrix m;
-        //Matrix rotationYMatrix;
-        //public Vector2 Positie { get; set; }
-        //private Texture2D Texture { get; set; }
-        //private Rectangle _ShowRect;
-        //public Rectangle CollisionRectangle;
-
-        //private Animation _animation;
-        //public Vector2 VelocityX = new Vector2(4f, 0);
-        //public Vector2 VelocityY = new Vector2(0, 7f);
-        //public Beweging _beweging { get; set; }
-
-        //public bool IsMoving = false;
-
-        //public Character(Texture2D _texture, Vector2 _positie)
-        //{
-        //    m = new Matrix();
-        //    rotationYMatrix = Matrix.CreateRotationY((float)Math.PI / 2);
-        //    Texture = _texture;
-        //    Positie = _positie;
-        //    _ShowRect = new Rectangle(0, 0, 64, 75);
-        //    CollisionRectangle = new Rectangle((int)Positie.X, (int)Positie.Y, 64, 75);
-
-        //    _animation = new Animation();
-        //    _animation.AddFrame(new Rectangle(0, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(64, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(128, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(192, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(256, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(320, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(384, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(448, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(512, 0, 64, 74));
-        //    _animation.AddFrame(new Rectangle(576, 0, 64, 74));
-        //    _animation.AantalBewegingenPerSeconde = 8;
-        //}
-
-        //public void Update(GameTime gameTime)
-        //{
-        //    _beweging.Update();
-
-        //    if (_beweging.left || _beweging.right || _beweging.up || _beweging.down)
-        //    {
-        //        IsMoving = true;
-        //        _animation.Update(gameTime);
-        //    }
-        //    else
-        //        IsMoving = false;
-
-        //    if(_beweging.left)
-        //    {
-        //        Positie -= VelocityX;
-        //    }
-        //    else if(_beweging.right)
-        //    {
-        //        Positie += VelocityX;
-        //    }
-        //    if (_beweging.up)
-        //    {
-        //        Positie -= VelocityY;
-        //        VelocityY.Y -= 0.15f;
-        //    }
-        //    else
-        //    {
-        //        VelocityX.X = 0;
-        //        VelocityY.Y += 0.15f;
-        //    }
-
-        //    Positie += VelocityX;
-        //    Positie += VelocityY;
-        //    CollisionRectangle.X = (int)Positie.X;
-        //    CollisionRectangle.Y = (int)Positie.Y;
-        //}
-
-        //public void Draw(SpriteBatch spritebatch)
-        //{
-        //    spritebatch.Draw(Texture, Positie, _animation.CurrentFrame.SourceRectangle, Color.AliceBlue);
-        //}
-
-        //public Rectangle GetCollisionRectangle()
-        //{
-        //    return CollisionRectangle;
-        //}
     }
 }
