@@ -23,9 +23,13 @@ namespace Zirox
         private Animation _animationRun;
         private Animation _animationShootIdle;
         private Animation _animationShootRun;
+        private Animation _animationHurt;
+        private Animation _animationDead;
         private bool IsMoving = false;
         private bool FaceRight = true;
         private bool hasShot = false;
+        private bool hasBeenShot = false;
+        private bool isDead = false;
         SpriteEffects FlipVerticalEffect = SpriteEffects.FlipHorizontally;
 
         private bool hasJumped = false;
@@ -113,15 +117,15 @@ namespace Zirox
             _animationRun.AantalBewegingenPerSeconde = 16;
 
             _animationShootIdle = new Animation();
-            _animationShootIdle.AddFrame(new Rectangle(0, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(64, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(128, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(192, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(256, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(320, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(384, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(448, 800, 64, 76));
-            _animationShootIdle.AddFrame(new Rectangle(512, 800, 64, 76));
+            _animationShootIdle.AddFrame(new Rectangle(0, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(64, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(128, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(192, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(256, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(320, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(384, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(448, 800, 64, 70));
+            _animationShootIdle.AddFrame(new Rectangle(512, 800, 64, 70));
             _animationShootIdle.AantalBewegingenPerSeconde = 16;
 
             _animationShootRun = new Animation();
@@ -136,6 +140,57 @@ namespace Zirox
             _animationShootRun.AddFrame(new Rectangle(512, 720, 64, 76));
             _animationShootRun.AddFrame(new Rectangle(576, 720, 64, 76));
             _animationShootRun.AantalBewegingenPerSeconde = 16;
+
+            _animationHurt = new Animation();
+            _animationHurt.AddFrame(new Rectangle(0, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(64, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(128, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(192, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(256, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(320, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(384, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(448, 152, 64, 76));
+            _animationHurt.AddFrame(new Rectangle(512, 152, 64, 76));
+            _animationHurt.AantalBewegingenPerSeconde = 16;
+
+            _animationDead = new Animation();
+            _animationDead.AddFrame(new Rectangle(0, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(112, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(224, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(336, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(448, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(560, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(672, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(784, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(896, 870, 112, 80));
+            _animationDead.AddFrame(new Rectangle(0, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(112, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(224, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(336, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(448, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(560, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(672, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(784, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(896, 950, 112, 80));
+            _animationDead.AddFrame(new Rectangle(0, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(112, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(224, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(336, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(448, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(560, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(672, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(784, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(896, 1030, 112, 80));
+            _animationDead.AddFrame(new Rectangle(0, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(112, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(224, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(336, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(448, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(560, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(672, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(784, 1110, 112, 80));
+            _animationDead.AddFrame(new Rectangle(896, 1110, 112, 80));
+            _animationDead.AantalBewegingenPerSeconde = 16;
         }
 
         public void Update(GameTime gameTime)
@@ -153,6 +208,8 @@ namespace Zirox
             _animationRun.Update(gameTime);
             _animationShootIdle.Update(gameTime);
             _animationShootRun.Update(gameTime);
+            _animationHurt.Update(gameTime);
+            _animationDead.Update(gameTime);
 
             if (_beweging.right)
             {
@@ -212,27 +269,36 @@ namespace Zirox
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(hasShot == true && FaceRight == true && IsMoving == false)
+            if(hasShot == true && FaceRight == true && IsMoving == false && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootIdle.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == true && FaceRight == false && IsMoving == false)
+            else if (hasShot == true && FaceRight == false && IsMoving == false && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if (hasShot == true && FaceRight == true && IsMoving == true)
+            else if (hasShot == true && FaceRight == true && IsMoving == true && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootRun.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == true && FaceRight == false && IsMoving == true)
+            else if (hasShot == true && FaceRight == false && IsMoving == true && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootRun.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if (hasShot == false && FaceRight == true && IsMoving == false && hasJumped == false)
+            else if (hasShot == false && FaceRight == true && IsMoving == false && hasJumped == false && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White);
-            else if(hasShot == false && FaceRight == false && IsMoving == false && hasJumped == false)
+            else if(hasShot == false && FaceRight == false && IsMoving == false && hasJumped == false && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture,rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0,0), FlipVerticalEffect,0.0f);
-            else if (hasShot == false && FaceRight == true && IsMoving == true && hasJumped == false)
+            else if (hasShot == false && FaceRight == true && IsMoving == true && hasJumped == false && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationRun.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == false && FaceRight == false && IsMoving == true && hasJumped == false)
+            else if (hasShot == false && FaceRight == false && IsMoving == true && hasJumped == false && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationRun.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if(hasShot == false && FaceRight == true && hasJumped == true)
+            else if(hasShot == false && FaceRight == true && hasJumped == true && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationJump.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == false && FaceRight == false && hasJumped == true)
+            else if (hasShot == false && FaceRight == false && hasJumped == true && hasBeenShot == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationJump.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            
+
+            if (hasBeenShot == true && isDead == false && FaceRight == true)
+                spriteBatch.Draw(texture, rectangle, _animationHurt.CurrentFrame.SourceRectangle, Color.White);
+            else if (hasBeenShot == true && isDead == false && FaceRight == true)
+                spriteBatch.Draw(texture, rectangle, _animationHurt.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
+            if (isDead == true && FaceRight == true)
+                spriteBatch.Draw(texture, rectangle, _animationDead.CurrentFrame.SourceRectangle, Color.White);
+            else if (isDead == true && FaceRight == true)
+                spriteBatch.Draw(texture, rectangle, _animationDead.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
+
         }
     }
 }
