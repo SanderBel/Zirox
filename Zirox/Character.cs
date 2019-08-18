@@ -216,7 +216,7 @@ namespace Zirox
         {
             position += velocity;
             rectangle = new Rectangle((int)position.X, (int)position.Y, _ShowRect.Width, _ShowRect.Height);
-            //speed = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+            speed = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
 
             //Gravity
             if (velocity.Y < 10)
@@ -234,18 +234,17 @@ namespace Zirox
             if (_beweging.right)
             {
                 faceRight = true;
-                velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+                velocity.X = speed;
                 isMoving = true;
             }
             else if (_beweging.left)
             {
                 faceRight = false;
-                velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+                velocity.X = -speed;
                 isMoving = true;
             }
             else
             {
-                //speed = 0f;
                 isMoving = false;
                 velocity.X = 0f;
             }
@@ -256,17 +255,18 @@ namespace Zirox
                 velocity.Y = -16f;
                 hasJumped = true;
             }
-            if (_beweging.shoot && bullets.Count < 6 && hasShot == false)
+            if (_beweging.shoot == true && bullets.Count < 5 && hasShot == false)
             {
-                bullets.Add(new Bullet(this, bulletTexture, 5));
+                bullets.Add(new Bullet(this, bulletTexture, 1));
                 hasShot = true;
+                _beweging.shoot = false;
             }
             else
                 hasShot = false;
 
             for (int i = 0; i < bullets.Count; i++)
             {
-                if (Vector2.Distance(bullets[i].Position, Position) > 700)
+                if (Vector2.Distance(bullets[i].Position, Position) > 500)
                 {
                     bullets.RemoveAt(i);
                     i--;
@@ -278,18 +278,23 @@ namespace Zirox
             bullets.ForEach(b => b.Update());
 
             //Collision
-            foreach (Enemy enemy in enemies)
-            {
-                for (int i = 0; i < bullets.Count; i++)
+           // foreach (Enemy enemy in enemies)
+            //{
+                for (int j = 0; j < enemies.Count; j++)
                 {
-                    if (bullets[i].Rectangle.Intersects(enemy.Rectangle))
+                    for (int i = 0; i < bullets.Count; i++)
                     {
-                        enemy.Die();
-                        bullets.RemoveAt(i);
-                        i--;
+                        if (bullets[i].Rectangle.Intersects(enemies[j].Rectangle))
+                        {
+                            enemies.RemoveAt(j);
+                            bullets.RemoveAt(i);
+                            j--;
+                            i--;
+                        }
                     }
                 }
-            }
+                    
+            //}
         }
 
         public void Collision(Rectangle newRectangle, int xOffset, int yOffset)

@@ -34,6 +34,8 @@ namespace Zirox
             get { return speed; }
             set
             {
+                minSpeed = 0f;
+                maxSpeed = 5f;
                 speed = MathHelper.Clamp(value, minSpeed, maxSpeed);
             }
         }
@@ -46,8 +48,20 @@ namespace Zirox
 
         public Bullet(Character character, Texture2D newTexture, float newSpeed)
         {
-            position = character.Position;
+            
+            
             faceRight = character.FaceRight;
+
+            if (faceRight)
+            {
+                position.X = character.Position.X + 55f;
+                position.Y = character.Position.Y + 20f;
+            }
+            else if (faceRight == false)
+            {
+                position.X = character.Position.X;
+                position.Y = character.Position.Y + 20f;
+            }
 
             texture = newTexture;
             Speed = character.Speed + newSpeed;
