@@ -54,6 +54,11 @@ namespace Zirox
             get { return speed; }
         }
 
+        public Rectangle Rectangle
+        {
+            get { return rectangle; }
+        }
+
         public Character() { }
 
         public void Load(ContentManager Content)

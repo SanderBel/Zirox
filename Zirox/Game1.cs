@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using Zirox.Screens;
 
 namespace Zirox
 {
@@ -23,30 +24,30 @@ namespace Zirox
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        Vector2 screen = new Vector2(1014, 768);
+        public Vector2 screen = new Vector2(1014, 768);
         Texture2D Backg;
         Camera camera;
 
-        public List<Enemy> enemies = new List<Enemy>();
-        Character Zirox;
-        Level level1;
+        //Screens
+        List<BaseScreen> Screens = new List<BaseScreen>();
+        public GameScreen GameScreen;
+        public MenuScreen MenuScreen;
 
         public Game1()
+        {
+            
+            Content.RootDirectory = "Content";
+        }
+        
+        protected override void Initialize()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.IsFullScreen = false;
             graphics.PreferredBackBufferWidth = (int)screen.X;
             graphics.PreferredBackBufferHeight = (int)screen.Y;
             graphics.ApplyChanges();
-            Content.RootDirectory = "Content";
-        }
-        
-        protected override void Initialize()
-        {
-            
-            level1 = new Level();
-            Zirox = new Character();
+            IsMouseVisible = true;
+
             base.Initialize();
         }
         
@@ -54,48 +55,16 @@ namespace Zirox
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             camera = new Camera(GraphicsDevice.Viewport);
-            
-            Zirox._beweging = new BewegingPijltjes();
-            
-            Zirox.Load(Content);
-            //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(-500, 200), 10));
-
-            Tiles.Content = Content;
             Backg = Content.Load<Texture2D>("finalDay");
-            /*
-             * 1 = Left Tile
-             * 2 = Middle Tile
-             * 3 = Right Tile
-             * 4 = Dirt Left
-             * 5 = Dirt Middle
-             * 6 = Dirt Right
-             * 7 = Island Left
-             * 8 = Island Middle
-             * 9 = Island Right
-             * 10 = Water
-             * 11 = Water Fill
-             * 12 = Next Level
-             * 13 = End
-             */
-            level1.Generate(new int[,]
-            {
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,2,2,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,4,8,8,8,8,7,0,0,0,0,0,0,0,0,5,2,7,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,3,0,0,0,5,2,2,2,2,4,4,8,8,8,8,8,8,7,0,0,0,0,0,0,1,4,8,8,6,3,0,0,1,2,3,0 },
-                { 0,0,0,7,9,0,0,7,8,9,0,0,0,0,0,0,0,0,5,4,8,8,8,8,8,8,8,8,8,8,8,8,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,4,8,8,8,8,8,8,8,8,8,8,8,8,8,8,6,1,2,2,2,3,9,9,9,9,9,9,9,1,2,2,1,3 },
-                { 1,2,2,2,2,3,10,10,1,3,9,1,3,9,9,9,1,4,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10,10,10,10,10,10,10,8,8,8,8,8 },
-            }, 64);
+
+            MenuScreen = new MenuScreen(this);
+            MenuScreen.IsActive = true;
+
+            GameScreen = new GameScreen(this);
+
+            Screens.Add(GameScreen);
+            Screens.Add(MenuScreen);
+            
         }
         
         protected override void UnloadContent()
@@ -108,23 +77,7 @@ namespace Zirox
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            Zirox.Update(enemies, gameTime);
-
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.Update(gameTime);
-                Zirox.Collision(enemy.Rectangle, level1.Width, level1.Height);
-            }
-            //enemies.Update(gameTime);
-            foreach (CollisionTiles tile in level1.CollisionTiles)
-            {
-                Zirox.Collision(tile.Rectangle, level1.Width, level1.Height);
-                camera.Update(Zirox.Position, level1.Width, level1.Height);
-                foreach(Enemy enemy in enemies)
-                {
-                    enemy.Collision(tile.Rectangle, level1.Width, level1.Height);
-                }
-            }
+            //camera.Update(Zirox.Position, level1.Width, level1.Height);
 
             base.Update(gameTime);
         }
@@ -132,19 +85,12 @@ namespace Zirox
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             spriteBatch.Begin(SpriteSortMode.Deferred,
                               BlendState.AlphaBlend,
-                              null,null,null,null,
+                              null, null, null, null,
                               camera.Transform);
-            spriteBatch.Draw(Backg,camera.BackPosition,Color.White);
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.Draw(spriteBatch);
-            }
-            Zirox.Draw(spriteBatch);
-            level1.Draw(spriteBatch);
-            spriteBatch.End();
+            spriteBatch.Draw(Backg, camera.BackPosition, Color.White);
+
 
             base.Draw(gameTime);
         }
