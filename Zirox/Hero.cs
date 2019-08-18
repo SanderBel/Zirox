@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Zirox
 {
-    public class Character
+    class Hero : BaseSprite
     {
-        private Texture2D texture;
-        private Vector2 position = new Vector2(64, 512);
-        private Vector2 velocity;
-        private Rectangle _ShowRect;
-        private Rectangle rectangle;
-        public Beweging _beweging { get; set; }
+        //public Beweging _beweging { get; set; }
+
+        private Keys left, right, up, shoot;
+
+        private Texture2D bulletTexture;
+        private List<Bullet> bullets = new List<Bullet>();
         private Animation _animationIdle;
         private Animation _animationJump;
         private Animation _animationRun;
@@ -25,25 +25,24 @@ namespace Zirox
         private Animation _animationShootRun;
         private Animation _animationHurt;
         private Animation _animationDead;
-        private bool IsMoving = false;
-        private bool FaceRight = true;
-        private bool hasShot = false;
-        private bool hasBeenShot = false;
-        private bool isDead = false;
-        SpriteEffects FlipVerticalEffect = SpriteEffects.FlipHorizontally;
+        private Rectangle _ShowRect;
 
-        private bool hasJumped = false;
+        private KeyboardState presentKey, pastKey;
 
-        public Vector2 Position
+        public Hero(Vector2 newPosition)
         {
-            get { return position; }
-        }
+            //texture = Content.Load<Texture2D>("CharSheet");
 
-        public Character() { }
+            position = newPosition;
+
+            minSpeed = 0;
+            maxSpeed = 7.5f;
+        }
 
         public void Load(ContentManager Content)
         {
             texture = Content.Load<Texture2D>("CharSheet");
+            bulletTexture = Content.Load<Texture2D>("Bullet");
 
             #region Animations
             _ShowRect = new Rectangle(0, 0, 54, 63);
@@ -59,7 +58,7 @@ namespace Zirox
             _animationIdle.AddFrame(new Rectangle(512, 0, 64, 76));
             _animationIdle.AddFrame(new Rectangle(576, 0, 64, 76));
             _animationIdle.AantalBewegingenPerSeconde = 16;
-            
+
             _animationJump = new Animation();
             _animationJump.AddFrame(new Rectangle(0, 390, 64, 76));
             _animationJump.AddFrame(new Rectangle(64, 390, 64, 76));
@@ -97,7 +96,7 @@ namespace Zirox
             _animationJump.AddFrame(new Rectangle(192, 640, 64, 76));
             _animationJump.AddFrame(new Rectangle(256, 640, 64, 76));
             _animationJump.AantalBewegingenPerSeconde = 24;
-            
+
             _animationRun = new Animation();
             _animationRun.AddFrame(new Rectangle(0, 228, 64, 74));
             _animationRun.AddFrame(new Rectangle(64, 228, 64, 74));
@@ -195,16 +194,16 @@ namespace Zirox
             #endregion
         }
 
-        public void Update(GameTime gameTime)
+        public void SetControls(Keys newLeft, Keys newRight, Keys newUp, Keys newShoot)
         {
-            position += velocity;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, _ShowRect.Width, _ShowRect.Height);
+            left = newLeft;
+            right = newRight;
+            up = newUp;
+            shoot = newShoot;
+        }
 
-            //Gravity
-            if (velocity.Y < 10)
-                velocity.Y += 0.5f;
-
-            _beweging.Update();
+        public void Update(List<Enemy> enemies,GameTime gameTime)
+        {
             _animationIdle.Update(gameTime);
             _animationJump.Update(gameTime);
             _animationRun.Update(gameTime);
@@ -213,94 +212,98 @@ namespace Zirox
             _animationHurt.Update(gameTime);
             _animationDead.Update(gameTime);
 
-            if (_beweging.right)
+            presentKey = Keyboard.GetState();
+
+            position += velocity;
+            rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            origin = new Vector2(rectangle.Width / 2, rectangle.Height / 2);
+
+            //Gravity
+            if (velocity.Y < 10)
+                velocity.Y += 0.5f;
+
+            if (presentKey.IsKeyDown(left))
+                velocity.X = -1f;
+            if (presentKey.IsKeyDown(left))
+                velocity.X = 1f;
+
+            if (presentKey.IsKeyDown(up))
+                Speed += 0.5f;
+            else Speed -= 0.25f;
+
+            if(presentKey.IsKeyDown(shoot)&&pastKey.IsKeyUp(shoot) && bullets.Count <6)
             {
-                FaceRight = true;
-                velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
-                IsMoving = true;
-            }
-            else if (_beweging.left)
-            {
-                FaceRight = false;
-                velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
-                IsMoving = true;
-            }
-            else
-            {
-                IsMoving = false;
-                velocity.X = 0f;
+                bullets.Add(new Bullet(this, bulletTexture, 5));
             }
 
-            if (_beweging.up && hasJumped == false)
+            for(int i=0; i<bullets.Count; i++)
             {
-                position.Y -= 1f;
-                velocity.Y = -16f;
-                hasJumped = true;
+                if (Vector2.Distance(bullets[i].Position, Position) > 700)
+                {
+                    bullets.RemoveAt(i);
+                    i--;
+                }
             }
-            if (_beweging.shoot)
-                hasShot = true;
-            else
-                hasShot = false;
+
+            velocity.X = Speed;
+
+            bullets.ForEach(b => b.Update());
+
+            //Collision
+            foreach(Enemy enemy in enemies)
+            {
+                for (int i = 0; i < bullets.Count; i++)
+                {
+                    if (bullets[i].Rectangle.Intersects(enemy.Rectangle))
+                    {
+                        //enemie.Die();
+                        bullets.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+
+            pastKey = presentKey;
+
+
+
+            //_beweging.Update();
+
+            //if (_beweging.right)
+            //{
+            //    //FaceRight = true;
+            //    velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+            //    //IsMoving = true;
+            //}
+            //else if (_beweging.left)
+            //{
+            //    //FaceRight = false;
+            //    velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 3;
+            //    //IsMoving = true;
+            //}
+            //else
+            //{
+            //    //IsMoving = false;
+            //    velocity.X = 0f;
+            //}
+
+            //if (_beweging.up) // && hasJumped == false)
+            //{
+            //    position.Y -= 1f;
+            //    velocity.Y = -16f;
+            //    //hasJumped = true;
+            //}
+            //if (_beweging.shoot)
+            //    //hasShot = true;
+            //else
+            //    //hasShot = false;
         }
 
-        public void Collision(Rectangle newRectangle, int xOffset, int yOffset)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            if (rectangle.TouchTopOf(newRectangle))
-            {
-                rectangle.Y = newRectangle.Y - rectangle.Height;
-                velocity.Y = 0f;
-                hasJumped = false;
-            }
+            bullets.ForEach(b => b.Draw(spriteBatch));
 
-            if (rectangle.TouchLeftOf(newRectangle))
-                position.X = newRectangle.X - rectangle.Width - 2;
-            if (rectangle.TouchRightOf(newRectangle))
-                position.X = newRectangle.X + newRectangle.Width + 2;
-            if (rectangle.TouchBottomOf(newRectangle))
-                velocity.Y = 1f;
-
-            if (position.X < 0)
-                position.X = 0;
-            if (position.X > xOffset - rectangle.Width)
-                position.X = xOffset - rectangle.Width;
-            if (position.Y < 0)
-                position.Y = 0;
-            if (position.Y > yOffset - rectangle.Height)
-                position.Y = yOffset - rectangle.Height;
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            if(hasShot == true && FaceRight == true && IsMoving == false && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationShootIdle.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == true && FaceRight == false && IsMoving == false && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationShootIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if (hasShot == true && FaceRight == true && IsMoving == true && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationShootRun.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == true && FaceRight == false && IsMoving == true && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationShootRun.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if (hasShot == false && FaceRight == true && IsMoving == false && hasJumped == false && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White);
-            else if(hasShot == false && FaceRight == false && IsMoving == false && hasJumped == false && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture,rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0,0), FlipVerticalEffect,0.0f);
-            else if (hasShot == false && FaceRight == true && IsMoving == true && hasJumped == false && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationRun.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == false && FaceRight == false && IsMoving == true && hasJumped == false && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationRun.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if(hasShot == false && FaceRight == true && hasJumped == true && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationJump.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == false && FaceRight == false && hasJumped == true && hasBeenShot == false && isDead == false)
-                spriteBatch.Draw(texture, rectangle, _animationJump.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-
-            if (hasBeenShot == true && isDead == false && FaceRight == true)
-                spriteBatch.Draw(texture, rectangle, _animationHurt.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasBeenShot == true && isDead == false && FaceRight == true)
-                spriteBatch.Draw(texture, rectangle, _animationHurt.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            if (isDead == true && FaceRight == true)
-                spriteBatch.Draw(texture, rectangle, _animationDead.CurrentFrame.SourceRectangle, Color.White);
-            else if (isDead == true && FaceRight == true)
-                spriteBatch.Draw(texture, rectangle, _animationDead.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-
+            base.Draw(spriteBatch);
         }
     }
 }

@@ -26,5 +26,27 @@ namespace Zirox
             set { rectangle = value; }
         }
 
+        protected float minSpeed, maxSpeed;
+        private float speed = 0;
+        public float Speed
+        {
+            get { return speed; }
+            set
+            {
+                speed = MathHelper.Clamp(value, minSpeed, maxSpeed);
+            }
+        }
+
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, scale, SpriteEffects.None, 0);
+        }
+
     }
 }

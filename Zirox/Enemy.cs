@@ -5,20 +5,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 
 namespace Zirox
 {
     class Enemy
     {
         Texture2D texture;
-        Rectangle rectangle;
         Vector2 position;
         Vector2 origin;
         Vector2 velocity;
+        protected Rectangle rectangle = Rectangle.Empty;
+        private Animation _animationRun;
+        private Rectangle _ShowRect;
 
         bool isFacingRight;
         float distance;
         float oldDistance;
+
+        public int Width
+        {
+            get { return texture.Width; }
+        }
+
+        public int Height
+        {
+            get { return texture.Height; }
+        }
+
+        public Rectangle Rectangle
+        {
+            get
+            {
+                return new Rectangle(rectangle.X - (rectangle.Width / 2), rectangle.Y - (rectangle.Height / 2), rectangle.Width, rectangle.Height);
+            }
+            set { rectangle = value; }
+        }
 
         public Enemy(Texture2D newTexture, Vector2 newPosition, float newDistance)
         {
@@ -29,27 +51,50 @@ namespace Zirox
             oldDistance = distance;
         }
 
+        public void Load(ContentManager Content)
+        {
+            texture = Content.Load<Texture2D>("CharSheet");
+            
+            _ShowRect = new Rectangle(0, 0, 54, 63);
+            _animationRun = new Animation();
+            _animationRun.AddFrame(new Rectangle(0, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(64, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(128, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(192, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(256, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(320, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(384, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(448, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(512, 0, 64, 76));
+            _animationRun.AddFrame(new Rectangle(576, 0, 64, 76));
+            _animationRun.AantalBewegingenPerSeconde = 16;
+        }
+
         public void Update(GameTime gameTime)
         {
             position += velocity;
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width - (texture.Width/2), texture.Height - (texture.Height / 2));
+
+            //gravity
+            if (velocity.Y < 10)
+                velocity.Y += 0.5f;
 
             if (distance <= 0)
             {
                 isFacingRight = true;
-                velocity.X = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 4;
+                velocity.X = 1f;
             }
-            else if(distance >= oldDistance)
+            else if (distance >= oldDistance)
             {
                 isFacingRight = false;
-                velocity.X = -(float)gameTime.ElapsedGameTime.TotalMilliseconds / 4;
+                velocity.X = -1f;
             }
 
             if (isFacingRight)
                 distance += 1;
             else
                 distance -= 1;
-                
         }
 
         public void Draw(SpriteBatch spriteBatch)

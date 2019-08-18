@@ -56,3 +56,4 @@ E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Zirox.xnb
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\EnemySheetWalking.xnb
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\TileSheet.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Bullet.xnb
