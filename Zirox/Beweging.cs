@@ -12,7 +12,7 @@ namespace Zirox
         public bool left { get; set; }
         public bool right { get; set; }
         public bool up { get; set; }
-        public bool down { get; set; }
+        public bool shoot { get; set; }
         public abstract void Update();
     }
 
@@ -48,13 +48,13 @@ namespace Zirox
                 up = false;
             }
 
-            if (stateKey.IsKeyDown(Keys.S))
+            if (stateKey.IsKeyDown(Keys.LeftControl))
             {
-                down = true;
+                shoot = true;
             }
-            if (stateKey.IsKeyUp(Keys.S))
+            if (stateKey.IsKeyUp(Keys.LeftControl))
             {
-                down = false;
+                shoot = false;
             }
         }
     }
@@ -92,13 +92,13 @@ namespace Zirox
                 up = false;
             }
 
-            if (stateKey.IsKeyDown(Keys.Down))
+            if (stateKey.IsKeyDown(Keys.RightControl))
             {
-                down = true;
+                shoot = true;
             }
-            if (stateKey.IsKeyUp(Keys.Down))
+            if (stateKey.IsKeyUp(Keys.RightControl))
             {
-                down = false;
+                shoot = false;
             }
         }
     }

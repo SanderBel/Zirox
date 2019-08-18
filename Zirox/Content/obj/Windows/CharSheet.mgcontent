@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/CharSheet.png</SourceFile>
-  <SourceTime>2019-08-14T18:05:40.4551234+02:00</SourceTime>
+  <SourceTime>2019-08-18T13:36:00.1900481+02:00</SourceTime>
   <DestFile>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/bin/Windows/CharSheet.xnb</DestFile>
-  <DestTime>2019-08-15T22:44:08.9506267+02:00</DestTime>
+  <DestTime>2019-08-18T13:36:18.1420538+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

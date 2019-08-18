@@ -4,7 +4,6 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/CharSheet.png</File>
     <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/AtmnBush.png</File>
     <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/AtmnTree.png</File>
     <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Bush.png</File>
@@ -25,5 +24,8 @@
     <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile12.png</File>
     <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Tile10.png</File>
     <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/Zirox.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/EnemySheetWalking.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/TileSheet.png</File>
+    <File>E:/Users/Desktop/VisualStudioProjects/Zirox/Zirox/Content/CharSheet.png</File>
   </SourceFiles>
 </SourceFileCollection>

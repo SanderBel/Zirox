@@ -32,7 +32,6 @@ namespace Zirox
             AnimationFrame newFrame = new AnimationFrame()
             {
                 SourceRectangle = rectangle,
-                //Duration = duration
             };
 
             frames.Add(newFrame);
