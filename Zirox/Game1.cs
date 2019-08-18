@@ -28,7 +28,7 @@ namespace Zirox
         Texture2D Backg;
         Camera camera;
 
-        Enemy enemy1;
+        public List<Enemy> enemies = new List<Enemy>();
         Character Zirox;
         Level level1;
         Level level2;
@@ -61,7 +61,9 @@ namespace Zirox
             
             Zirox.Load(Content);
             //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
-            enemy1 = new Enemy(Content.Load<Texture2D>("EnemySheetWalking"),new Vector2(500,200),200);
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
 
             Tiles.Content = Content;
             Backg = Content.Load<Texture2D>("finalDay");
@@ -122,15 +124,25 @@ namespace Zirox
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            Zirox.Update(gameTime);
-            enemy1.Update(gameTime);
+            Zirox.Update(enemies, gameTime);
+
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.Update(gameTime);
+                Zirox.Collision(enemy.Rectangle, level1.Width, level1.Height);
+            }
+            //enemies.Update(gameTime);
             foreach (CollisionTiles tile in level1.CollisionTiles)
             {
                 Zirox.Collision(tile.Rectangle, level1.Width, level1.Height);
                 camera.Update(Zirox.Position, level1.Width, level1.Height);
-                enemy1.Collision(tile.Rectangle, level1.Width, level1.Height);
+                foreach(Enemy enemy in enemies)
+                {
+                    enemy.Collision(tile.Rectangle, level1.Width, level1.Height);
+                }
+                //enemy1.Collision(tile.Rectangle, level1.Width, level1.Height);
             }
-            Zirox.Collision(enemy1.Rectangle, level1.Width, level1.Height);
+            //Zirox.Collision(enemy1.Rectangle, level1.Width, level1.Height);
             //foreach (CollisionTiles tile in level2.CollisionTiles)
             //{
             //    Zirox.Collision(tile.Rectangle, level2.Width, level2.Height);
@@ -149,7 +161,11 @@ namespace Zirox
                               null,null,null,null,
                               camera.Transform);
             spriteBatch.Draw(Backg,camera.BackPosition,Color.White);
-            enemy1.Draw(spriteBatch);
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
+            //enemy1.Draw(spriteBatch);
             Zirox.Draw(spriteBatch);
             level1.Draw(spriteBatch);
             level2.Draw(spriteBatch);

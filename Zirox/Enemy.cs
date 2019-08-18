@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Zirox
 {
-    class Enemy
+    public class Enemy
     {
         Texture2D texture;
         Vector2 position;
@@ -95,6 +95,11 @@ namespace Zirox
                 distance += 1;
             else
                 distance -= 1;
+        }
+
+        public void Die()
+        {
+            Console.WriteLine("Died");
         }
 
         public void Draw(SpriteBatch spriteBatch)
