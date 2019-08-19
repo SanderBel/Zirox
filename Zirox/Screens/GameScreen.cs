@@ -39,7 +39,6 @@ namespace Zirox.Screens
 
             Zirox.Load(Content);
             //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
-            //enemies.Add(new Enemy(Content.Load<Texture2D>(null), new Vector2(0f, 0f), 0f));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));

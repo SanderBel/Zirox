@@ -52,13 +52,13 @@ namespace Zirox
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             MenuScreen = new MenuScreen(this);
-            //MenuScreen.IsActive = true;
+            MenuScreen.IsActive = true;
 
             GameScreen = new GameScreen(this);
-            GameScreen.IsActive = true;
+            //GameScreen.IsActive = true;
 
             Screens.Add(GameScreen);
-           // Screens.Add(MenuScreen);
+            Screens.Add(MenuScreen);
             
         }
         
@@ -70,7 +70,12 @@ namespace Zirox
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            {
+                GameScreen.IsActive = false;
+                MenuScreen.IsActive = true;
+
+            }
+                 
 
             Screens.ForEach(s =>
             {

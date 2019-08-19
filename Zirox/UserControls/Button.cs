@@ -11,12 +11,9 @@ namespace Zirox.UserControls
 {
     public class Button : Control
     {
-        public Button(ContentManager Content, string newText, Rectangle newRectangle)
+        public Button(Texture2D newTexture,  Rectangle newRectangle)
         {
-            texture = Content.Load<Texture2D>("ButtonsPlay");
-            font = Content.Load<SpriteFont>("ComicSans");
-
-            text = newText;
+            texture = newTexture;
             Rectangle = newRectangle;
 
             IsVisible = true;
@@ -28,16 +25,6 @@ namespace Zirox.UserControls
             if (IsVisible)
             {
                 spriteBatch.Draw(texture, Rectangle, Color.White);
-
-                if(text.Length>0 && font != null)
-                {
-                    float x = font.MeasureString(text).X / 2;
-                    float y = font.MeasureString(text).Y / 2;
-
-                    Vector2 fPosition = new Vector2((X + (Width / 2)) - x, (Y + (Height / 2)) - y);
-
-                    spriteBatch.DrawString(font, text, fPosition, Color.Black);
-                }
             }
         }
     }

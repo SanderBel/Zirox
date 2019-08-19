@@ -14,6 +14,8 @@ namespace Zirox.Screens
     {
         Button btnPLay;
         Button btnQuit;
+        Texture2D btnPlayTexture;
+        Texture2D btnQuitTexture;
 
         List<Control> Controls = new List<Control>();
 
@@ -21,10 +23,14 @@ namespace Zirox.Screens
 
         public MenuScreen(Game1 game)
         {
+            Content = game.Content;
             int centre = (int)game.screen.X / 2;
 
-            btnPLay = new Button(game.Content, "Play", new Rectangle(centre - 50, 100, 100, 35));
-            btnQuit = new Button(game.Content, "Quit", new Rectangle(centre - 50, 150, 100, 35));
+            btnPlayTexture = Content.Load<Texture2D>("ButtonsPlay");
+            btnQuitTexture = Content.Load<Texture2D>("ButtonsExit");
+
+            btnPLay = new Button(btnPlayTexture, new Rectangle(centre - 50, 100, 100, 35));
+            btnQuit = new Button(btnQuitTexture,  new Rectangle(centre - 50, 150, 100, 35));
 
             Controls.Add(btnPLay);
             Controls.Add(btnQuit);
@@ -44,6 +50,11 @@ namespace Zirox.Screens
                 this.IsActive = false;
                 game.GameScreen.IsActive = true;
             }
+            //if (btnQuit.IsLeftClicked)
+            //{
+            //    this.IsActive = false;
+            //    game.QuitScreen.IsActive = true;
+            //}
         }
 
         public override void Draw(SpriteBatch spriteBatch)
