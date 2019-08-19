@@ -97,11 +97,6 @@ namespace Zirox
                 distance -= 1;
         }
 
-        public void Die()
-        {
-            Console.WriteLine("Died");
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             //Moving right to draw, Flip it for facing left

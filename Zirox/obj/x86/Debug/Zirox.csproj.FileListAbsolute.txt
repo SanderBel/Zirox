@@ -62,3 +62,4 @@ E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\ButtonsPause.xnb
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\ButtonsPlay.xnb
 E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\ComicSans.xnb
+E:\Users\Desktop\VisualStudioProjects\Zirox\Zirox\bin\Windows\x86\Debug\Content\Coin.xnb

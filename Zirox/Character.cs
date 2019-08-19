@@ -278,28 +278,22 @@ namespace Zirox
                 }
             }
 
-            //velocity.X = Speed;
+            
 
             bullets.ForEach(b => b.Update());
-
-            //Collision
-           // foreach (Enemy enemy in enemies)
-            //{
                 for (int j = 1; j < enemies.Count; j++)
                 {
-                    for (int i = 0; i < bullets.Count; i++)
+                    for (int k = 0; k < bullets.Count; k++)
                     {
-                        if (bullets[i].Rectangle.Intersects(enemies[j].Rectangle) && j > 0)
+                        if (bullets[k].Rectangle.Intersects(enemies[j].Rectangle) && j > 0)
                         {
                             enemies.RemoveAt(j);
-                            bullets.RemoveAt(i);
                             j--;
-                            i--;
+                            bullets.RemoveAt(k);
+                            k--;
                         }
                     }
                 }
-                    
-            //}
         }
 
         public void Collision(Rectangle newRectangle, int xOffset, int yOffset)

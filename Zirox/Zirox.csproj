@@ -47,6 +47,7 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Coin.cs" />
     <Compile Include="CollisionTiles.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />

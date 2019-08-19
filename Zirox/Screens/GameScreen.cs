@@ -12,6 +12,7 @@ namespace Zirox.Screens
     {
         private Character Zirox;
         private List<Enemy> enemies = new List<Enemy>();
+        private List<Coin> coins = new List<Coin>();
 
 
         Texture2D Backg;
@@ -35,14 +36,16 @@ namespace Zirox.Screens
             level1 = new Level();
             Backg = Content.Load<Texture2D>("finalDay");
 
-            Zirox._beweging = new BewegingPijltjes();
+            coins.ForEach(c => c.Load(Content));
 
-            Zirox.Load(Content);
+            Zirox._beweging = new BewegingPijltjes();
             //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(-500, 200), 10));
+
+            coins.Add(new Coin(Content.Load<Texture2D>("Coin"), new Vector2(300,400)));
 
             Tiles.Content = Content;
 
@@ -97,6 +100,16 @@ namespace Zirox.Screens
                 }
             }
 
+            coins.ForEach(c => c.Update(gameTime));
+            for (int l = 0; l < coins.Count; l++)
+            {
+                if (coins[l].Rectangle.Intersects(Zirox.Rectangle))
+                {
+                    coins.RemoveAt(l);
+                    l--;
+                }
+            }
+
             foreach (CollisionTiles tile in level1.CollisionTiles)
             {
                 Zirox.Collision(tile.Rectangle, level1.Width, level1.Height);
@@ -119,7 +132,11 @@ namespace Zirox.Screens
             {
                 enemy.Draw(spriteBatch);
             }
-            
+            foreach (Coin coin in coins)
+            {
+                coin.Draw(spriteBatch);
+            }
+
             Zirox.Draw(spriteBatch);
             level1.Draw(spriteBatch);
             spriteBatch.End();
