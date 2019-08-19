@@ -39,15 +39,31 @@ namespace Zirox.Screens
             Zirox._beweging = new BewegingPijltjes();
             Zirox.Load(Content);
             level1 = new Level();
-            Backg = Content.Load<Texture2D>("finalDay");
+            Backg = Content.Load<Texture2D>("finalNight");
 
             coins.ForEach(c => c.Load(Content));
 
             Zirox._beweging = new BewegingPijltjes();
             //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(320, 512), 192));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(640, 512), 256));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(838, 128), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(1152, 256), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(1792, 256), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(2560, 256), 256));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(2688, 256), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3328, 0), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3520, 256), 192));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3712, 256), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3840, 256), 640));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(4480, 256), 384));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(4608, 256), 512));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(4800, 64), 64));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5952, 64), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5760, 64), 960));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5632, 64), 832));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5440, 64), 960));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5312, 64), 576));
 
             coins.Add(new Coin(Content.Load<Texture2D>("Coin"), new Vector2(300,400)));
 
@@ -69,7 +85,8 @@ namespace Zirox.Screens
              * 13 = End
              */
             level1.Generate(new int[,]
-            {
+            {                      
+                //0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,10,0,0
                 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
                 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
                 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -79,17 +96,16 @@ namespace Zirox.Screens
                 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,5,5,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
                 { 0,0,0,0,0,0,0,0,0,0,0,0,1,2,8,8,8,2,3,0,0,0,0,0,0,1,5,5,5,5,5,6,0,0,0,0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,8,8,8,8,8,8,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,0,0,0,0,0,0,0,0 },
                 { 0,0,0,0,0,0,0,0,0,0,0,0,4,6,0,0,0,4,5,2,2,2,2,2,2,5,5,5,5,5,5,5,3,0,0,0,0,0,0,7,5,5,5,8,9,0,0,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,4,6,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,5,5,5,8,9,0,0,7,8,9,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,1,5,6,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,6,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,1,5,6,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,6,0,0,0,0,0,0,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0 },
                 { 0,0,0,0,0,0,0,0,0,0,0,4,5,6,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,4,5,6,1,1,1,1,1,1,5,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3 },
-                { 1,2,2,2,2,2,2,2,2,2,2,5,5,6,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,2,2,2,2,2,2,2,2,2,2,5,5,6,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 1,2,2,2,2,2,2,2,2,2,2,5,5,6,11,11,11,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,2,2,2,2,2,2,2,2,2,2,5,5,6,11,11,11,11,11,11,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
             }, 64);
         }
 
-        public override void Update(Game1 game, GameTime gameTime, float newPoints)
+        public override void Update(Game1 game, GameTime gameTime)
         {
             camera.Update(Zirox.Position, level1.Width, level1.Height);
             Zirox.Update(enemies, gameTime);
-            points = newPoints;
 
             foreach (Enemy enemy in enemies)
             {

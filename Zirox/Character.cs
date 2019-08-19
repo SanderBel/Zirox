@@ -13,12 +13,11 @@ namespace Zirox
     public class Character
     {
         private Texture2D texture;
-        private Vector2 position = new Vector2(64, 512);
+        private Vector2 position;
         private Vector2 velocity;
         private Rectangle _ShowRect;
         private Rectangle rectangle;
         public Beweging _beweging { get; set; }
-        private float points;
         private Animation _animationIdle;
         private Animation _animationJump;
         private Animation _animationRun;
@@ -42,12 +41,6 @@ namespace Zirox
         {
             get { return hasBeenHurt; }
             set { isDead = value; }
-        }
-
-        public float Points
-        {
-            get { return points; }
-            set { points = value; }
         }
 
         public bool IsDead
@@ -83,8 +76,9 @@ namespace Zirox
         {
             texture = Content.Load<Texture2D>("CharSheet");
             bulletTexture = Content.Load<Texture2D>("Bullet");
-            points = 0;
-            
+
+            position = new Vector2(128, 64);
+
 
             #region Animations
             _ShowRect = new Rectangle(0, 0, 54, 63);
@@ -290,7 +284,7 @@ namespace Zirox
 
             for (int i = 0; i < bullets.Count; i++)
             {
-                if (Vector2.Distance(bullets[i].Position, Position) > 500)
+                if (Vector2.Distance(bullets[i].Position, Position) > 300)
                 {
                     bullets.RemoveAt(i);
                     i--;

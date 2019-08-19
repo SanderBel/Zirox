@@ -23,7 +23,7 @@ namespace Zirox.Screens
             texture = Content.Load<Texture2D>("GameOver");
         }
 
-        public override void Update(Game1 game, GameTime gameTime, float newPoints)
+        public override void Update(Game1 game, GameTime gameTime)
         {
         }
 

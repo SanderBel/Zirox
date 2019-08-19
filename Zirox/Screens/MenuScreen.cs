@@ -41,7 +41,7 @@ namespace Zirox.Screens
             Controls.Add(btnQuit);
         }
 
-        public override void Update(Game1 game, GameTime gameTime, float newPoints)
+        public override void Update(Game1 game, GameTime gameTime)
         {
             presentMouse = Mouse.GetState();
 
@@ -53,13 +53,12 @@ namespace Zirox.Screens
             if (btnPLay.IsLeftClicked)
             {
                 this.IsActive = false;
-                game.GameScreen.IsActive = true;
+                game.LevelScreen2.IsActive = true;
             }
             if (btnQuit.IsLeftClicked)
             {
                 this.IsActive = false;
                 game.Exit();
-                //game.QuitScreen.IsActive = true;
             }
         }
 

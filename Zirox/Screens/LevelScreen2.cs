@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Zirox.Screens
 {
-    public class LevelScreen2: BaseScreen
+    public class LevelScreen2 : BaseScreen
     {
         private Character Zirox;
         private List<Enemy> enemies = new List<Enemy>();
@@ -16,9 +16,8 @@ namespace Zirox.Screens
 
 
         Texture2D Backg;
-        Level level2;
+        Level level1;
         SpriteBatch spriteBatch;
-        //GraphicsDeviceManager graphics;
         public Vector2 screen = new Vector2(1014, 768);
         float points;
 
@@ -32,23 +31,40 @@ namespace Zirox.Screens
         public LevelScreen2(Game1 game)
         {
             Content = game.Content;
-
+            int centre = (int)screen.X / 2;
             camera = new Camera(game.GraphicsDevice.Viewport);
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
             Zirox = new Character();
             Zirox._beweging = new BewegingPijltjes();
             Zirox.Load(Content);
-            level2 = new Level();
-            Backg = Content.Load<Texture2D>("finalNight");
+            level1 = new Level();
+            Backg = Content.Load<Texture2D>("finalDay");
 
             coins.ForEach(c => c.Load(Content));
 
             Zirox._beweging = new BewegingPijltjes();
             //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(320, 512), 192));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(640, 512), 256));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(838, 128), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(1152, 256), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(1792, 256), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(2496, 0), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(2560, 256), 256));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(2688, 256), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3328, 0), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3520, 0), 192));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3712, 256), 320));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(3904, 256), 256));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(4480, 256), 192));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(4608, 256), 64));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(4800, 64), 64));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5952, 64), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5760, 64), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5632, 64), 192));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5440, 64), 128));
+            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5312, 64), 192));
 
             coins.Add(new Coin(Content.Load<Texture2D>("Coin"), new Vector2(300, 400)));
 
@@ -69,33 +85,33 @@ namespace Zirox.Screens
              * 12 = Next Level
              * 13 = End
              */
-            level2.Generate(new int[,]
+            level1.Generate(new int[,]
             {
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,2,2,2,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,4,8,8,8,8,7,0,0,0,0,0,0,0,0,5,2,7,0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,3,0,0,0,5,2,2,2,2,4,4,8,8,8,8,8,8,7,0,0,0,0,0,0,1,4,8,8,6,3,0,0,1,2,3,0 },
-                { 0,0,0,7,9,0,0,7,8,9,0,0,0,0,0,0,0,0,5,4,8,8,8,8,8,8,8,8,8,8,8,8,8,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0 },
-                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,4,8,8,8,8,8,8,8,8,8,8,8,8,8,8,6,1,2,2,2,3,9,9,9,9,9,9,9,1,2,2,1,3 },
-                { 1,2,2,2,2,3,10,10,1,3,9,1,3,9,9,9,1,4,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,10,10,10,10,10,10,10,8,8,8,8,8 },
+                //0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,10,0,0
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,7,8,8,8,8,8,9,0,0,0,0,0,0,0,0,0,0,7,8,9,0,0,0,0,0,0,0,0,0,0,7,8,9,0,0,0,0,0,0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,9,0,0,0,0,0,0,0,0,0,0,0,7,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0 },
+                { 0,0,0,0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,8,8,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
+                { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,5,5,5,5,5,5,5,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,3,0,0,0,0,1,2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 0,0,0,7,8,9,0,0,0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 0,0,0,0,0,0,0,0,0,0,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
+                { 1,2,2,2,2,2,2,2,2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5 },
             }, 64);
         }
 
-        public override void Update(Game1 game, GameTime gameTime, float newPoints)
+        public override void Update(Game1 game, GameTime gameTime)
         {
-            camera.Update(Zirox.Position, level2.Width, level2.Height);
+            camera.Update(Zirox.Position, level1.Width, level1.Height);
             Zirox.Update(enemies, gameTime);
-            points = newPoints;
 
             foreach (Enemy enemy in enemies)
             {
                 enemy.Update(gameTime);
-                Zirox.Collision(enemy.Rectangle, level2.Width, level2.Height);
+                Zirox.Collision(enemy.Rectangle, level1.Width, level1.Height);
             }
 
             for (int i = 0; i < enemies.Count; i++)
@@ -103,6 +119,9 @@ namespace Zirox.Screens
                 if (enemies[i].Rectangle.Intersects(Zirox.Rectangle))
                 {
                     //ZIROX DIES
+                    this.IsActive = false;
+                    game.GameOverScreen.IsActive = true;
+                    Zirox.Update(enemies, gameTime);
                 }
             }
 
@@ -117,13 +136,13 @@ namespace Zirox.Screens
                 }
             }
 
-            foreach (CollisionTiles tile in level2.CollisionTiles)
+            foreach (CollisionTiles tile in level1.CollisionTiles)
             {
-                Zirox.Collision(tile.Rectangle, level2.Width, level2.Height);
+                Zirox.Collision(tile.Rectangle, level1.Width, level1.Height);
 
                 foreach (Enemy enemy in enemies)
                 {
-                    enemy.Collision(tile.Rectangle, level2.Width, level2.Height);
+                    enemy.Collision(tile.Rectangle, level1.Width, level1.Height);
                 }
             }
         }
@@ -145,10 +164,8 @@ namespace Zirox.Screens
             }
 
             Zirox.Draw(spriteBatch);
-            level2.Draw(spriteBatch);
+            level1.Draw(spriteBatch);
             spriteBatch.End();
-
-            //base.Draw(gameTime);
         }
     }
 }

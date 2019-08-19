@@ -15,13 +15,11 @@ namespace Zirox
 
         //Screens
         List<BaseScreen> screens = new List<BaseScreen>();
-        public LevelScreen1 GameScreen;
+        public LevelScreen1 LevelScreen1;
         public MenuScreen MenuScreen;
-        public LevelScreen2 GameScreen2;
+        public LevelScreen2 LevelScreen2;
         public EndScreen EndScreen;
         public GameOverScreen GameOverScreen;
-        Character character;
-        float points;
 
         public Game1()
         {            
@@ -46,13 +44,13 @@ namespace Zirox
             MenuScreen = new MenuScreen(this);
             MenuScreen.IsActive = true;
 
-            GameScreen = new LevelScreen1(this);
-            GameScreen2 = new LevelScreen2(this);
+            LevelScreen1 = new LevelScreen1(this);
+            LevelScreen2 = new LevelScreen2(this);
             EndScreen = new EndScreen(this);
             GameOverScreen = new GameOverScreen(this);
 
-            screens.Add(GameScreen);
-            screens.Add(GameScreen2);
+            screens.Add(LevelScreen1);
+            screens.Add(LevelScreen2);
             screens.Add(MenuScreen);
             screens.Add(EndScreen);
             screens.Add(GameOverScreen);
@@ -67,24 +65,24 @@ namespace Zirox
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                GameScreen.IsActive = false;
-                GameScreen2.IsActive = false;
+                LevelScreen1.IsActive = false;
+                LevelScreen2.IsActive = false;
                 MenuScreen.IsActive = true;
                 EndScreen.IsActive = false;
                 GameOverScreen.IsActive = false;
             }
-            else if (GameScreen.XPositionZirox >= 600)
+            else if (LevelScreen2.XPositionZirox >= 6400)
             {
-                GameScreen.IsActive = false;
-                GameScreen2.IsActive = true;
+                LevelScreen1.IsActive = true;
+                LevelScreen2.IsActive = false;
                 MenuScreen.IsActive = false;
                 EndScreen.IsActive = false;
                 GameOverScreen.IsActive = false;
             }
-            else if (GameScreen2.XPositionZirox >= 200)
+            else if (LevelScreen1.XPositionZirox >= 6400)
             {
-                GameScreen.IsActive = false;
-                GameScreen2.IsActive = false;
+                LevelScreen1.IsActive = false;
+                LevelScreen2.IsActive = false;
                 MenuScreen.IsActive = false;
                 EndScreen.IsActive = true;
                 GameOverScreen.IsActive = false;
@@ -100,7 +98,7 @@ namespace Zirox
             screens.ForEach(s =>
             {
                 if (s.IsActive)
-                    s.Update(this, gameTime, points);
+                    s.Update(this, gameTime);
             });
             
 

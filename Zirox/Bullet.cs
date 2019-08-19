@@ -35,7 +35,7 @@ namespace Zirox
             set
             {
                 minSpeed = 0f;
-                maxSpeed = 5f;
+                maxSpeed = 10f;
                 speed = MathHelper.Clamp(value, minSpeed, maxSpeed);
             }
         }
@@ -55,12 +55,12 @@ namespace Zirox
             if (faceRight)
             {
                 position.X = character.Position.X + 55f;
-                position.Y = character.Position.Y + 20f;
+                position.Y = character.Position.Y + 30f;
             }
             else if (faceRight == false)
             {
                 position.X = character.Position.X;
-                position.Y = character.Position.Y + 20f;
+                position.Y = character.Position.Y + 30f;
             }
 
             texture = newTexture;
