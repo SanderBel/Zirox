@@ -10,32 +10,27 @@ using Zirox.UserControls;
 
 namespace Zirox.Screens
 {
-    public class MenuScreen : BaseScreen
+    public class EndScreen : BaseScreen
     {
         Button btnPLay;
         Button btnQuit;
         Texture2D btnPlayTexture;
         Texture2D btnQuitTexture;
-        Texture2D menuBackground;
-        Texture2D welcomeSign;
 
         List<Control> Controls = new List<Control>();
 
         MouseState presentMouse;
 
-        public MenuScreen(Game1 game)
+        public EndScreen(Game1 game)
         {
             Content = game.Content;
-            int centreX = (int)game.screen.X / 2;
-            int centreY = (int)game.screen.Y / 2;
+            int centre = (int)game.screen.X / 2;
 
             btnPlayTexture = Content.Load<Texture2D>("ButtonsPlay");
             btnQuitTexture = Content.Load<Texture2D>("ButtonsExit");
-            menuBackground = Content.Load<Texture2D>("menuBackground");
-            welcomeSign = Content.Load<Texture2D>("welcomeSign");
 
-            btnPLay = new Button(btnPlayTexture, new Rectangle(centreX - 190, centreY-45, 50, 50));
-            btnQuit = new Button(btnQuitTexture,  new Rectangle(centreX + 190, centreY-45, 50, 50));
+            btnPLay = new Button(btnPlayTexture, new Rectangle(centre - 50, 100, 100, 35));
+            btnQuit = new Button(btnQuitTexture, new Rectangle(centre - 50, 150, 100, 35));
 
             Controls.Add(btnPLay);
             Controls.Add(btnQuit);
@@ -66,8 +61,7 @@ namespace Zirox.Screens
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(menuBackground, new Rectangle(0, 0, 1014, 768), Color.White);
-            spriteBatch.Draw(welcomeSign, new Rectangle(310, 100, 500, 250), Color.White);
+
             foreach (Control control in Controls)
             {
                 control.Draw(spriteBatch);
@@ -76,6 +70,6 @@ namespace Zirox.Screens
             spriteBatch.End();
         }
 
-        
+
     }
 }

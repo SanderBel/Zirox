@@ -6,30 +6,22 @@ using Zirox.Screens;
 
 namespace Zirox
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
     public class Game1 : Game
     {
-        public enum GameState
-        {
-            MainMenu,
-            LevelSelect,
-            Level1,
-            Level2,
-            Died,
-            QuitGame
-        }
-        GameState CurrentState = GameState.MainMenu;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public Vector2 screen = new Vector2(1014, 768);
 
         //Screens
-        List<BaseScreen> Screens = new List<BaseScreen>();
-        public GameScreen GameScreen;
+        List<BaseScreen> screens = new List<BaseScreen>();
+        public LevelScreen1 GameScreen;
         public MenuScreen MenuScreen;
+        public LevelScreen2 GameScreen2;
+        public EndScreen EndScreen;
+        public GameOverScreen GameOverScreen;
+
+        public LivesCounter livesCounter;
 
         public Game1()
         {            
@@ -54,12 +46,16 @@ namespace Zirox
             MenuScreen = new MenuScreen(this);
             MenuScreen.IsActive = true;
 
-            GameScreen = new GameScreen(this);
-            //GameScreen.IsActive = true;
+            GameScreen = new LevelScreen1(this);
+            GameScreen2 = new LevelScreen2(this);
+            EndScreen = new EndScreen(this);
+            GameOverScreen = new GameOverScreen(this);
 
-            Screens.Add(GameScreen);
-            Screens.Add(MenuScreen);
-            
+            screens.Add(GameScreen);
+            screens.Add(GameScreen2);
+            screens.Add(MenuScreen);
+            screens.Add(EndScreen);
+            screens.Add(GameOverScreen);
         }
         
         protected override void UnloadContent()
@@ -69,15 +65,41 @@ namespace Zirox
         
         protected override void Update(GameTime gameTime)
         {
+            //livesCounter= GameScreen.LivesCounter;
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 GameScreen.IsActive = false;
+                GameScreen2.IsActive = false;
                 MenuScreen.IsActive = true;
-
+                EndScreen.IsActive = false;
+                GameOverScreen.IsActive = false;
             }
-                 
+            else if (GameScreen.XPositionZirox >= 3200)
+            {
+                GameScreen.IsActive = false;
+                GameScreen2.IsActive = true;
+                MenuScreen.IsActive = false;
+                EndScreen.IsActive = false;
+                GameOverScreen.IsActive = false;
+            }
+            else if (GameScreen2.XPositionZirox >= 3200)
+            {
+                GameScreen.IsActive = false;
+                GameScreen2.IsActive = false;
+                MenuScreen.IsActive = false;
+                EndScreen.IsActive = true;
+                GameOverScreen.IsActive = false;
+            }
+            else if (GameOverScreen.IsActive == true)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                {
+                    Exit();
+                }
+            }
 
-            Screens.ForEach(s =>
+            screens.ForEach(s =>
             {
                 if (s.IsActive)
                     s.Update(this, gameTime);
@@ -91,7 +113,7 @@ namespace Zirox
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Screens.ForEach(s =>
+            screens.ForEach(s =>
             {
                 if (s.IsActive)
                     s.Draw(spriteBatch);

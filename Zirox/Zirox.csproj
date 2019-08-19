@@ -52,9 +52,13 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="LivesCounter.cs" />
     <Compile Include="RectangleHelper.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
-    <Compile Include="Screens\GameScreen.cs" />
+    <Compile Include="Screens\EndScreen.cs" />
+    <Compile Include="Screens\GameOverScreen.cs" />
+    <Compile Include="Screens\LevelScreen1.cs" />
+    <Compile Include="Screens\LevelScreen2.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
     <Compile Include="Tiles.cs" />
     <Compile Include="Program.cs" />

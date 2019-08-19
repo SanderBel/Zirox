@@ -30,18 +30,29 @@ namespace Zirox
         private bool isMoving = false;
         private bool faceRight = true;
         private bool hasShot = false;
-        private bool hasBeenShot = false;
+        private bool hasBeenHurt = false;
         private bool isDead = false;
         private bool hasJumped = false;
         private float speed;
 
         SpriteEffects FlipVerticalEffect = SpriteEffects.FlipHorizontally;
 
-        
+        public bool HasBeenHurt
+        {
+            get { return hasBeenHurt; }
+            set { isDead = value; }
+        }
+
+        public bool IsDead
+        {
+            get { return isDead; }
+            set { isDead = value; }
+        }
 
         public Vector2 Position
         {
             get { return position; }
+            set { position = value; }
         }
 
         public bool FaceRight
@@ -260,7 +271,7 @@ namespace Zirox
                 velocity.Y = -16f;
                 hasJumped = true;
             }
-            if (_beweging.shoot == true && bullets.Count < 5 && hasShot == false)
+            if (_beweging.shoot == true && bullets.Count < 1 && hasShot == false)
             {
                 bullets.Add(new Bullet(this, bulletTexture, 1));
                 hasShot = true;
@@ -285,7 +296,7 @@ namespace Zirox
                 {
                     for (int k = 0; k < bullets.Count; k++)
                     {
-                        if (bullets[k].Rectangle.Intersects(enemies[j].Rectangle) && j > 0)
+                        if (bullets[k].Rectangle.Intersects(enemies[j].Rectangle))
                         {
                             enemies.RemoveAt(j);
                             j--;
@@ -326,34 +337,34 @@ namespace Zirox
         {
             bullets.ForEach(b => b.Draw(spriteBatch));
 
-            if (hasShot == true && faceRight == true && isMoving == false && hasBeenShot == false && isDead == false)
+            if (hasShot == true && faceRight == true && isMoving == false && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootIdle.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == true && faceRight == false && isMoving == false && hasBeenShot == false && isDead == false)
+            else if (hasShot == true && faceRight == false && isMoving == false && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if (hasShot == true && faceRight == true && isMoving == true && hasBeenShot == false && isDead == false)
+            else if (hasShot == true && faceRight == true && isMoving == true && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootRun.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == true && faceRight == false && isMoving == true && hasBeenShot == false && isDead == false)
+            else if (hasShot == true && faceRight == false && isMoving == true && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationShootRun.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if (hasShot == false && faceRight == true && isMoving == false && hasJumped == false && hasBeenShot == false && isDead == false)
+            else if (hasShot == false && faceRight == true && isMoving == false && hasJumped == false && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White);
-            else if(hasShot == false && faceRight == false && isMoving == false && hasJumped == false && hasBeenShot == false && isDead == false)
+            else if(hasShot == false && faceRight == false && isMoving == false && hasJumped == false && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture,rectangle, _animationIdle.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0,0), FlipVerticalEffect,0.0f);
-            else if (hasShot == false && faceRight == true && isMoving == true && hasJumped == false && hasBeenShot == false && isDead == false)
+            else if (hasShot == false && faceRight == true && isMoving == true && hasJumped == false && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationRun.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == false && faceRight == false && isMoving == true && hasJumped == false && hasBeenShot == false && isDead == false)
+            else if (hasShot == false && faceRight == false && isMoving == true && hasJumped == false && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationRun.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
-            else if(hasShot == false && faceRight == true && hasJumped == true && hasBeenShot == false && isDead == false)
+            else if(hasShot == false && faceRight == true && hasJumped == true && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationJump.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasShot == false && faceRight == false && hasJumped == true && hasBeenShot == false && isDead == false)
+            else if (hasShot == false && faceRight == false && hasJumped == true && hasBeenHurt == false && isDead == false)
                 spriteBatch.Draw(texture, rectangle, _animationJump.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
 
-            if (hasBeenShot == true && isDead == false && faceRight == true)
+            if (hasBeenHurt == true && isDead == false && faceRight == true)
                 spriteBatch.Draw(texture, rectangle, _animationHurt.CurrentFrame.SourceRectangle, Color.White);
-            else if (hasBeenShot == true && isDead == false && faceRight == true)
+            else if (hasBeenHurt == true && isDead == false && faceRight == false)
                 spriteBatch.Draw(texture, rectangle, _animationHurt.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
             if (isDead == true && faceRight == true)
                 spriteBatch.Draw(texture, rectangle, _animationDead.CurrentFrame.SourceRectangle, Color.White);
-            else if (isDead == true && faceRight == true)
+            else if (isDead == true && faceRight == false)
                 spriteBatch.Draw(texture, rectangle, _animationDead.CurrentFrame.SourceRectangle, Color.White, 0.0f, new Vector2(0, 0), FlipVerticalEffect, 0.0f);
 
         }

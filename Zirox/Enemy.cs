@@ -33,6 +33,12 @@ namespace Zirox
             get { return texture.Height; }
         }
 
+        public float VelocityX
+        {
+            get { return velocity.X; }
+            set { velocity.X = value; }
+        }
+
         public Rectangle Rectangle
         {
             get

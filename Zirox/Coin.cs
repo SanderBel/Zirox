@@ -15,7 +15,7 @@ namespace Zirox
         Vector2 position;
         Vector2 origin;
         protected Rectangle rectangle = Rectangle.Empty;
-        private Animation _animationCoin;
+        //private Animation _animationCoin;
 
         public int Width
         {
@@ -45,12 +45,12 @@ namespace Zirox
         public void Load(ContentManager Content)
         {
             texture = Content.Load<Texture2D>("Coin");
-            _animationCoin = new Animation();
-            _animationCoin.AddFrame(new Rectangle(0, 0, 20, 20));
-            _animationCoin.AddFrame(new Rectangle(0, 21, 18, 21));
-            _animationCoin.AddFrame(new Rectangle(3, 44, 64, 20));
-            _animationCoin.AddFrame(new Rectangle(6, 66, 6, 22));
-            _animationCoin.AantalBewegingenPerSeconde = 16;
+            //_animationCoin = new Animation();
+            //_animationCoin.AddFrame(new Rectangle(0, 0, 20, 20));
+            //_animationCoin.AddFrame(new Rectangle(0, 21, 18, 21));
+            //_animationCoin.AddFrame(new Rectangle(3, 44, 64, 20));
+            //_animationCoin.AddFrame(new Rectangle(6, 66, 6, 22));
+            //_animationCoin.AantalBewegingenPerSeconde = 16;
         }
 
         public void Update(GameTime gameTime)

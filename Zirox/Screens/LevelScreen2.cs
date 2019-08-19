@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Zirox.Screens
 {
-    public class GameScreen : BaseScreen
+    public class LevelScreen2: BaseScreen
     {
         private Character Zirox;
         private List<Enemy> enemies = new List<Enemy>();
@@ -16,15 +16,20 @@ namespace Zirox.Screens
 
 
         Texture2D Backg;
-        Level level1;
+        Level level2;
         SpriteBatch spriteBatch;
         //GraphicsDeviceManager graphics;
         public Vector2 screen = new Vector2(1014, 768);
 
         Camera camera;
 
-        public GameScreen(Game1 game)
-        {            
+        public float XPositionZirox
+        {
+            get { return Zirox.Position.X; }
+        }
+
+        public LevelScreen2(Game1 game)
+        {
             Content = game.Content;
 
             camera = new Camera(game.GraphicsDevice.Viewport);
@@ -33,8 +38,8 @@ namespace Zirox.Screens
             Zirox = new Character();
             Zirox._beweging = new BewegingPijltjes();
             Zirox.Load(Content);
-            level1 = new Level();
-            Backg = Content.Load<Texture2D>("finalDay");
+            level2 = new Level();
+            Backg = Content.Load<Texture2D>("finalNight");
 
             coins.ForEach(c => c.Load(Content));
 
@@ -43,9 +48,8 @@ namespace Zirox.Screens
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(-500, 200), 10));
 
-            coins.Add(new Coin(Content.Load<Texture2D>("Coin"), new Vector2(300,400)));
+            coins.Add(new Coin(Content.Load<Texture2D>("Coin"), new Vector2(300, 400)));
 
             Tiles.Content = Content;
 
@@ -64,7 +68,7 @@ namespace Zirox.Screens
              * 12 = Next Level
              * 13 = End
              */
-            level1.Generate(new int[,]
+            level2.Generate(new int[,]
             {
                 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
                 { 0,0,0,0,0,0,0,0,0,7,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -83,13 +87,13 @@ namespace Zirox.Screens
 
         public override void Update(Game1 game, GameTime gameTime)
         {
-            camera.Update(Zirox.Position, level1.Width, level1.Height);
+            camera.Update(Zirox.Position, level2.Width, level2.Height);
             Zirox.Update(enemies, gameTime);
 
             foreach (Enemy enemy in enemies)
             {
                 enemy.Update(gameTime);
-                Zirox.Collision(enemy.Rectangle, level1.Width, level1.Height);
+                Zirox.Collision(enemy.Rectangle, level2.Width, level2.Height);
             }
 
             for (int i = 0; i < enemies.Count; i++)
@@ -110,13 +114,13 @@ namespace Zirox.Screens
                 }
             }
 
-            foreach (CollisionTiles tile in level1.CollisionTiles)
+            foreach (CollisionTiles tile in level2.CollisionTiles)
             {
-                Zirox.Collision(tile.Rectangle, level1.Width, level1.Height);
-                
+                Zirox.Collision(tile.Rectangle, level2.Width, level2.Height);
+
                 foreach (Enemy enemy in enemies)
                 {
-                    enemy.Collision(tile.Rectangle, level1.Width, level1.Height);
+                    enemy.Collision(tile.Rectangle, level2.Width, level2.Height);
                 }
             }
         }
@@ -138,7 +142,7 @@ namespace Zirox.Screens
             }
 
             Zirox.Draw(spriteBatch);
-            level1.Draw(spriteBatch);
+            level2.Draw(spriteBatch);
             spriteBatch.End();
 
             //base.Draw(gameTime);
