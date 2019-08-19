@@ -16,8 +16,6 @@ namespace Zirox
         Vector2 origin;
         Vector2 velocity;
         protected Rectangle rectangle = Rectangle.Empty;
-        private Animation _animationRun;
-        private Rectangle _ShowRect;
 
         bool isFacingRight;
         float distance;
@@ -60,20 +58,6 @@ namespace Zirox
         public void Load(ContentManager Content)
         {
             texture = Content.Load<Texture2D>("CharSheet");
-            
-            _ShowRect = new Rectangle(0, 0, 54, 63);
-            _animationRun = new Animation();
-            _animationRun.AddFrame(new Rectangle(0, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(64, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(128, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(192, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(256, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(320, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(384, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(448, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(512, 0, 64, 76));
-            _animationRun.AddFrame(new Rectangle(576, 0, 64, 76));
-            _animationRun.AantalBewegingenPerSeconde = 16;
         }
 
         public void Update(GameTime gameTime)

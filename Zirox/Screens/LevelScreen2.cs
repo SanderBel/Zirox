@@ -14,13 +14,11 @@ namespace Zirox.Screens
         private List<Enemy> enemies = new List<Enemy>();
         private List<Coin> coins = new List<Coin>();
 
-
         Texture2D Backg;
         Level level1;
         SpriteBatch spriteBatch;
         public Vector2 screen = new Vector2(1014, 768);
         float points;
-
         Camera camera;
 
         public float XPositionZirox
@@ -40,6 +38,7 @@ namespace Zirox.Screens
             Zirox.Load(Content);
             level1 = new Level();
             Backg = Content.Load<Texture2D>("finalDay");
+            Tiles.Content = Content;
 
             coins.ForEach(c => c.Load(Content));
 
@@ -67,9 +66,7 @@ namespace Zirox.Screens
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(5312, 64), 192));
 
             coins.Add(new Coin(Content.Load<Texture2D>("Coin"), new Vector2(300, 400)));
-
-            Tiles.Content = Content;
-
+            
             /*
              * 1 = Left Tile
              * 2 = Middle Tile
@@ -154,10 +151,12 @@ namespace Zirox.Screens
                               null, null, null, null,
                                camera.Transform);
             spriteBatch.Draw(Backg, camera.BackPosition, Color.White);
+            
             foreach (Enemy enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
+
             foreach (Coin coin in coins)
             {
                 coin.Draw(spriteBatch);

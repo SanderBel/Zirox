@@ -99,8 +99,7 @@ namespace Zirox
             {
                 if (s.IsActive)
                     s.Update(this, gameTime);
-            });
-            
+            });            
 
             base.Update(gameTime);
         }
@@ -114,7 +113,6 @@ namespace Zirox
                 if (s.IsActive)
                     s.Draw(spriteBatch);
             });
-
 
             base.Draw(gameTime);
         }

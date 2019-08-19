@@ -67,14 +67,13 @@ namespace Zirox.Screens
             spriteBatch.Begin();
             spriteBatch.Draw(menuBackground, new Rectangle(0, 0, 1014, 768), Color.White);
             spriteBatch.Draw(welcomeSign, new Rectangle(310, 100, 500, 250), Color.White);
+
             foreach (Control control in Controls)
             {
                 control.Draw(spriteBatch);
             }
 
             spriteBatch.End();
-        }
-
-        
+        }        
     }
 }

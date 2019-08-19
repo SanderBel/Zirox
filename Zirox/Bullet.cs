@@ -48,8 +48,6 @@ namespace Zirox
 
         public Bullet(Character character, Texture2D newTexture, float newSpeed)
         {
-            
-            
             faceRight = character.FaceRight;
 
             if (faceRight)
@@ -77,7 +75,6 @@ namespace Zirox
                 velocity.X = Speed;
             else
                 velocity.X = -Speed;
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
