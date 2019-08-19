@@ -25,8 +25,6 @@ namespace Zirox
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public Vector2 screen = new Vector2(1014, 768);
-        Texture2D Backg;
-        Camera camera;
 
         //Screens
         List<BaseScreen> Screens = new List<BaseScreen>();
@@ -34,36 +32,33 @@ namespace Zirox
         public MenuScreen MenuScreen;
 
         public Game1()
-        {
-            
+        {            
             Content.RootDirectory = "Content";
-        }
-        
-        protected override void Initialize()
-        {
             graphics = new GraphicsDeviceManager(this);
             graphics.IsFullScreen = false;
             graphics.PreferredBackBufferWidth = (int)screen.X;
             graphics.PreferredBackBufferHeight = (int)screen.Y;
             graphics.ApplyChanges();
+        }
+        
+        protected override void Initialize()
+        {
             IsMouseVisible = true;
-
             base.Initialize();
         }
         
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            camera = new Camera(GraphicsDevice.Viewport);
-            Backg = Content.Load<Texture2D>("finalDay");
 
             MenuScreen = new MenuScreen(this);
-            MenuScreen.IsActive = true;
+            //MenuScreen.IsActive = true;
 
             GameScreen = new GameScreen(this);
+            GameScreen.IsActive = true;
 
             Screens.Add(GameScreen);
-            Screens.Add(MenuScreen);
+           // Screens.Add(MenuScreen);
             
         }
         
@@ -77,7 +72,12 @@ namespace Zirox
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //camera.Update(Zirox.Position, level1.Width, level1.Height);
+            Screens.ForEach(s =>
+            {
+                if (s.IsActive)
+                    s.Update(this, gameTime);
+            });
+            
 
             base.Update(gameTime);
         }
@@ -85,11 +85,12 @@ namespace Zirox
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(SpriteSortMode.Deferred,
-                              BlendState.AlphaBlend,
-                              null, null, null, null,
-                              camera.Transform);
-            spriteBatch.Draw(Backg, camera.BackPosition, Color.White);
+
+            Screens.ForEach(s =>
+            {
+                if (s.IsActive)
+                    s.Draw(spriteBatch);
+            });
 
 
             base.Draw(gameTime);

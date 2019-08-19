@@ -17,6 +17,5 @@ namespace Zirox.Screens
 
         public abstract void Update(Game1 game, GameTime gameTime);
         public abstract void Draw(SpriteBatch spriteBatch);
-        public abstract void LoadContent();
     }
 }

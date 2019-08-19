@@ -285,11 +285,11 @@ namespace Zirox
             //Collision
            // foreach (Enemy enemy in enemies)
             //{
-                for (int j = 0; j < enemies.Count; j++)
+                for (int j = 1; j < enemies.Count; j++)
                 {
                     for (int i = 0; i < bullets.Count; i++)
                     {
-                        if (bullets[i].Rectangle.Intersects(enemies[j].Rectangle))
+                        if (bullets[i].Rectangle.Intersects(enemies[j].Rectangle) && j > 0)
                         {
                             enemies.RemoveAt(j);
                             bullets.RemoveAt(i);

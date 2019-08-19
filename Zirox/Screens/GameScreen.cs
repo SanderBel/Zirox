@@ -13,45 +13,40 @@ namespace Zirox.Screens
         private Character Zirox;
         private List<Enemy> enemies = new List<Enemy>();
 
-        
 
+        Texture2D Backg;
         Level level1;
+        SpriteBatch spriteBatch;
         //GraphicsDeviceManager graphics;
         public Vector2 screen = new Vector2(1014, 768);
+
+        Camera camera;
 
         public GameScreen(Game1 game)
         {            
             Content = game.Content;
 
+            camera = new Camera(game.GraphicsDevice.Viewport);
+            spriteBatch = new SpriteBatch(game.GraphicsDevice);
+
             Zirox = new Character();
             Zirox._beweging = new BewegingPijltjes();
             Zirox.Load(Content);
             level1 = new Level();
-        }
-
-        public override void LoadContent()
-        {
-            level1 = new Level();
-            Zirox = new Character();
-
-            //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
-            enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
-
-            //
+            Backg = Content.Load<Texture2D>("finalDay");
 
             Zirox._beweging = new BewegingPijltjes();
 
             Zirox.Load(Content);
             //Texture, Vector(start PositionX, start PositionY, Distance it will walk to the left)
+            //enemies.Add(new Enemy(Content.Load<Texture2D>(null), new Vector2(0f, 0f), 0f));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(600, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(300, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(900, 200), 200));
             enemies.Add(new Enemy(Content.Load<Texture2D>("EnemySheetWalking"), new Vector2(-500, 200), 10));
 
             Tiles.Content = Content;
-            
+
             /*
              * 1 = Left Tile
              * 2 = Middle Tile
@@ -86,10 +81,9 @@ namespace Zirox.Screens
 
         public override void Update(Game1 game, GameTime gameTime)
         {
+            camera.Update(Zirox.Position, level1.Width, level1.Height);
             Zirox.Update(enemies, gameTime);
 
-
-            
             foreach (Enemy enemy in enemies)
             {
                 enemy.Update(gameTime);
@@ -117,14 +111,21 @@ namespace Zirox.Screens
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
+            spriteBatch.Begin(SpriteSortMode.Deferred,
+                              BlendState.AlphaBlend,
+                              null, null, null, null,
+                               camera.Transform);
+            spriteBatch.Draw(Backg, camera.BackPosition, Color.White);
             foreach (Enemy enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
+            
             Zirox.Draw(spriteBatch);
             level1.Draw(spriteBatch);
             spriteBatch.End();
+
+            //base.Draw(gameTime);
         }
     }
 }

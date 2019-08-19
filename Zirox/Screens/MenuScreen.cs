@@ -30,10 +30,6 @@ namespace Zirox.Screens
             Controls.Add(btnQuit);
         }
 
-        public override void LoadContent()
-        {
-        }
-
         public override void Update(Game1 game, GameTime gameTime)
         {
             presentMouse = Mouse.GetState();

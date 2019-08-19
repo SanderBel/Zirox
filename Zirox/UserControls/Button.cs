@@ -13,8 +13,8 @@ namespace Zirox.UserControls
     {
         public Button(ContentManager Content, string newText, Rectangle newRectangle)
         {
-            texture = Content.Load<Texture2D>("Controls/Button");
-            font = Content.Load<SpriteFont>("Fonts/ComicSans20");
+            texture = Content.Load<Texture2D>("ButtonsPlay");
+            font = Content.Load<SpriteFont>("ComicSans");
 
             text = newText;
             Rectangle = newRectangle;
