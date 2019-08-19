@@ -15,7 +15,7 @@ namespace Zirox.Screens
 
         protected ContentManager Content;
 
-        public abstract void Update(Game1 game, GameTime gameTime);
+        public abstract void Update(Game1 game, GameTime gameTime, float newPoints);
         public abstract void Draw(SpriteBatch spriteBatch);
     }
 }

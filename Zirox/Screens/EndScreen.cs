@@ -12,60 +12,28 @@ namespace Zirox.Screens
 {
     public class EndScreen : BaseScreen
     {
-        Button btnPLay;
-        Button btnQuit;
         Texture2D btnPlayTexture;
-        Texture2D btnQuitTexture;
+        float points;
+        string pointsString;
 
-        List<Control> Controls = new List<Control>();
-
-        MouseState presentMouse;
+        SpriteFont font;
 
         public EndScreen(Game1 game)
         {
             Content = game.Content;
-            int centre = (int)game.screen.X / 2;
-
-            btnPlayTexture = Content.Load<Texture2D>("ButtonsPlay");
-            btnQuitTexture = Content.Load<Texture2D>("ButtonsExit");
-
-            btnPLay = new Button(btnPlayTexture, new Rectangle(centre - 50, 100, 100, 35));
-            btnQuit = new Button(btnQuitTexture, new Rectangle(centre - 50, 150, 100, 35));
-
-            Controls.Add(btnPLay);
-            Controls.Add(btnQuit);
+            font = Content.Load<SpriteFont>("ComicSans");
         }
 
-        public override void Update(Game1 game, GameTime gameTime)
+        public override void Update(Game1 game, GameTime gameTime, float newPoints)
         {
-            presentMouse = Mouse.GetState();
-
-            foreach (Control control in Controls)
-            {
-                control.Update(presentMouse);
-            }
-
-            if (btnPLay.IsLeftClicked)
-            {
-                this.IsActive = false;
-                game.GameScreen.IsActive = true;
-            }
-            if (btnQuit.IsLeftClicked)
-            {
-                this.IsActive = false;
-                game.Exit();
-                //game.QuitScreen.IsActive = true;
-            }
+            points = newPoints;
+            pointsString = points.ToString();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-
-            foreach (Control control in Controls)
-            {
-                control.Draw(spriteBatch);
-            }
+            spriteBatch.DrawString(font,pointsString,new Vector2(450,450),Color.AliceBlue);
 
             spriteBatch.End();
         }

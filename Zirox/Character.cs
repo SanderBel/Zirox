@@ -18,6 +18,7 @@ namespace Zirox
         private Rectangle _ShowRect;
         private Rectangle rectangle;
         public Beweging _beweging { get; set; }
+        private float points;
         private Animation _animationIdle;
         private Animation _animationJump;
         private Animation _animationRun;
@@ -41,6 +42,12 @@ namespace Zirox
         {
             get { return hasBeenHurt; }
             set { isDead = value; }
+        }
+
+        public float Points
+        {
+            get { return points; }
+            set { points = value; }
         }
 
         public bool IsDead
@@ -76,6 +83,7 @@ namespace Zirox
         {
             texture = Content.Load<Texture2D>("CharSheet");
             bulletTexture = Content.Load<Texture2D>("Bullet");
+            points = 0;
             
 
             #region Animations
@@ -289,10 +297,8 @@ namespace Zirox
                 }
             }
 
-            
-
             bullets.ForEach(b => b.Update());
-                for (int j = 1; j < enemies.Count; j++)
+                for (int j = 0; j < enemies.Count; j++)
                 {
                     for (int k = 0; k < bullets.Count; k++)
                     {

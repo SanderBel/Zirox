@@ -20,6 +20,7 @@ namespace Zirox.Screens
         SpriteBatch spriteBatch;
         //GraphicsDeviceManager graphics;
         public Vector2 screen = new Vector2(1014, 768);
+        float points;
 
         Camera camera;
 
@@ -85,10 +86,11 @@ namespace Zirox.Screens
             }, 64);
         }
 
-        public override void Update(Game1 game, GameTime gameTime)
+        public override void Update(Game1 game, GameTime gameTime, float newPoints)
         {
             camera.Update(Zirox.Position, level2.Width, level2.Height);
             Zirox.Update(enemies, gameTime);
+            points = newPoints;
 
             foreach (Enemy enemy in enemies)
             {
@@ -109,6 +111,7 @@ namespace Zirox.Screens
             {
                 if (coins[l].Rectangle.Intersects(Zirox.Rectangle))
                 {
+                    points += 100;
                     coins.RemoveAt(l);
                     l--;
                 }

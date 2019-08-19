@@ -52,7 +52,6 @@
     <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Level.cs" />
-    <Compile Include="LivesCounter.cs" />
     <Compile Include="RectangleHelper.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="Screens\EndScreen.cs" />

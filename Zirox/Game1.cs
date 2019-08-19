@@ -20,8 +20,8 @@ namespace Zirox
         public LevelScreen2 GameScreen2;
         public EndScreen EndScreen;
         public GameOverScreen GameOverScreen;
-
-        public LivesCounter livesCounter;
+        Character character;
+        float points;
 
         public Game1()
         {            
@@ -65,8 +65,6 @@ namespace Zirox
         
         protected override void Update(GameTime gameTime)
         {
-            //livesCounter= GameScreen.LivesCounter;
-
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 GameScreen.IsActive = false;
@@ -75,7 +73,7 @@ namespace Zirox
                 EndScreen.IsActive = false;
                 GameOverScreen.IsActive = false;
             }
-            else if (GameScreen.XPositionZirox >= 3200)
+            else if (GameScreen.XPositionZirox >= 600)
             {
                 GameScreen.IsActive = false;
                 GameScreen2.IsActive = true;
@@ -83,7 +81,7 @@ namespace Zirox
                 EndScreen.IsActive = false;
                 GameOverScreen.IsActive = false;
             }
-            else if (GameScreen2.XPositionZirox >= 3200)
+            else if (GameScreen2.XPositionZirox >= 200)
             {
                 GameScreen.IsActive = false;
                 GameScreen2.IsActive = false;
@@ -102,7 +100,7 @@ namespace Zirox
             screens.ForEach(s =>
             {
                 if (s.IsActive)
-                    s.Update(this, gameTime);
+                    s.Update(this, gameTime, points);
             });
             
 

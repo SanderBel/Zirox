@@ -41,7 +41,7 @@ namespace Zirox.Screens
             Controls.Add(btnQuit);
         }
 
-        public override void Update(Game1 game, GameTime gameTime)
+        public override void Update(Game1 game, GameTime gameTime, float newPoints)
         {
             presentMouse = Mouse.GetState();
 
