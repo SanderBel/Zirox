@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/AtmnBush.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/AtmnTree.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Bush.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tree.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Winter Tree.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/finalDay.PNG</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/finalNight.PNG</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile1.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile2.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile3.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile4.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile5.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile6.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile7.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile8.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile9.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile11.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile12.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile10.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Zirox.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/EnemySheetWalking.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/TileSheet.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/CharSheet.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Bullet.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/ComicSans.spritefont</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Buttons.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/ButtonsPlay.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/ButtonsExit.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/ButtonsPause.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/LivesCounter.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/GameOver.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/menuBackground.jpg</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/WelcomeSign.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Coin.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/FarewellSign.png</File>
+    <File>C:/Users/Sander/Desktop/Zirox/Zirox/Content/Tile13.png</File>
+  </SourceFiles>
+</SourceFileCollection>
